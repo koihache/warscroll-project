@@ -13,7 +13,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
-    
+
     <!-- Strings para los nombres provisionales del menú-->
 
     <string name="menu_inicio">INICIO</string>
@@ -34,6 +34,10 @@
     <string name="login_boton_registrar">Registrarse</string>
 
 
+
+    <!-- Strings para el fragment register -->
+
+    <string name="register_label">Crea tu cuenta</string>
 
 
     <string name="copyrigth">© 2023 WarScroll. Todos los derechos reservados. </string>

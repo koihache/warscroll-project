@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/edit_login_correo"
-        android:layout_width="@dimen/tamanio_login_input"
+        android:layout_width="@dimen/tamanio_input"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:ems="10"
@@ -32,7 +32,7 @@
 
     <EditText
         android:id="@+id/edit_login_password"
-        android:layout_width="@dimen/tamanio_login_input"
+        android:layout_width="@dimen/tamanio_input"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"

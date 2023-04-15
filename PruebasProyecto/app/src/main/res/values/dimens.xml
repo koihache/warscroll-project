@@ -2,7 +2,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
 
-    <dimen name="tamanio_login_input">350dp</dimen>
+    <dimen name="tamanio_input">350dp</dimen>
 
     <dimen name="tamanio_titulo_fragments">20sp</dimen>
 

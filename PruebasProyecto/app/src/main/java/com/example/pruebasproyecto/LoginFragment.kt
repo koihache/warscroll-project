@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.pruebasproyecto.databinding.FragmentLoginBinding
 
+
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */

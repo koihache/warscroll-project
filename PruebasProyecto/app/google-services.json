@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "371587785150",
+    "firebase_url": "https://fir-warscroll-default-rtdb.firebaseio.com",
+    "project_id": "fir-warscroll",
+    "storage_bucket": "fir-warscroll.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371587785150:android:0d15ce178c49ffb71859ef",
+        "android_client_info": {
+          "package_name": "com.example.pruebasproyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371587785150-1stblhrcg255knvcu7df22i5o9if9qc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKv12Tvx_aZAn03aGUiTJa6C6p61NEZfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371587785150-1stblhrcg255knvcu7df22i5o9if9qc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

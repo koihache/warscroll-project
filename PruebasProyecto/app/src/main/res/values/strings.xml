@@ -4,6 +4,7 @@
 
 
     <!-- Strings used for fragments for navigation -->
+
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
@@ -22,23 +23,31 @@
     <string name="menu_ajustes">AJUSTES</string>
 
 
+    <!-- String para inputs -->
+
+    <string name="input_usuario_correo">Introduzca su correo</string>
+    <string name="input_usuario_password">Introduzca su contraseña</string>
+    <string name="input_usuario_passwordrepetir">Introduzca su contraseña de nuevo</string>
+    <string name="input_usuario_nombreusuario">Introduzca su usuario</string>
+
 
     <!-- Strings para el fragment login -->
     
     <string name="login_label">¿Ya tienes una cuenta?</string>
-
-    <string name="login_usuario_correo">Introduzca su correo</string>
-    <string name="login_usuario_password">Introduzca su contraseña</string>
     <string name="login_boton_iniciar">Iniciar sesión</string>
-    
     <string name="login_boton_registrar">Registrarse</string>
-
 
 
     <!-- Strings para el fragment register -->
 
     <string name="register_label">Crea tu cuenta</string>
 
+    <string name="register_crear_cuenta">Crear cuenta</string>
+
+
+    <!-- String para el copyrigth de la aplicación -->
 
     <string name="copyrigth">© 2023 WarScroll. Todos los derechos reservados. </string>
+
+
 </resources>

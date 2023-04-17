@@ -22,7 +22,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/edit_register_usuario"
         android:layout_width="@dimen/tamanio_input"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -46,7 +46,7 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_register_usuario" />
 
 
     <EditText
@@ -78,7 +78,7 @@
 
 
     <Button
-        android:id="@+id/button_second"
+        android:id="@+id/boton_crearcuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -88,7 +88,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_register_repetir" />
 
-
+    <TextView
+        android:id="@+id/label_register_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="@string/copyrigth"
+        android:textColor="@color/color5"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

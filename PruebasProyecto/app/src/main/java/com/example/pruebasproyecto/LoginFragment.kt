@@ -41,7 +41,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.botonRegistrar.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
         }
     }
 

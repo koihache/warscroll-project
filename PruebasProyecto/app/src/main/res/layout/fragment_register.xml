@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:ems="10"
+        android:textColor="@color/color1"
         android:fontFamily="@font/kanit_regular"
         android:hint="@string/input_usuario_nombreusuario"
         android:inputType="textPersonName"

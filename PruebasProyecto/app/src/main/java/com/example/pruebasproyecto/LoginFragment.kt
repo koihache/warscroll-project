@@ -58,12 +58,10 @@ class LoginFragment : Fragment() {
         //los pone en los edit para facilitar el usuario el inicio de la sesión
 
 
-
         if (correo.isNullOrEmpty()||password.isNullOrEmpty()){
             binding.editLoginCorreo.setText(correo)
             binding.editLoginPassword.setText(password)
         }
-
 
         binding.botonLogin.setOnClickListener{
 
@@ -82,10 +80,11 @@ class LoginFragment : Fragment() {
                         Snackbar.LENGTH_SHORT
                     ).show()
 
-                    /*findNavController().navigate(
+                    findNavController().navigate(
                         //TODO nombre del metodo del nav,
+                        R.id.action_Login_to_SecondActivity,
                         bundle
-                    )*/
+                    )
                 } else {
                     Snackbar.make(
                         binding.botonLogin, "Usuario o contraseña introducidos no correctos",

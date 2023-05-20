@@ -35,8 +35,7 @@ class RegisterFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
@@ -53,10 +52,64 @@ class RegisterFragment : Fragment() {
         auth = Firebase.auth
 
         binding.botonCrearcuenta.setOnClickListener {
-            //TODO Hacer la comprobacion con el reference si existe ya la cuenta
+
+            if (!binding.editRegisterCorreo.text.isNullOrBlank() && !binding.editRegisterUsuario.text.isNullOrBlank() && !binding.editRegisterPassword.text.isNullOrBlank() && !binding.editRegisterRepetir.text.isNullOrBlank()) {
+                if (binding.editRegisterPassword.text.toString().length > 5) {
+                    if (binding.editRegisterPassword.text.toString() == binding.editRegisterRepetir.text.toString()) {
+
+                        var comprobacion = auth.createUserWithEmailAndPassword(
+                            binding.editRegisterCorreo.text.toString(),
+                            binding.editRegisterPassword.text.toString()
+                        ).isSuccessful
+
+                        if (comprobacion) {
+                            auth.createUserWithEmailAndPassword(
+                                binding.editRegisterCorreo.text.toString(),
+                                binding.editRegisterPassword.text.toString()
+                            )
+
+                            Snackbar.make(
+                                binding.editRegisterCorreo,
+                                "El usuario se ha creado correctamente",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+
+                        } else {
+                            Snackbar.make(
+                                binding.editRegisterCorreo,
+                                "El usuario no se ha creado correctamente",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+
+                    } else {
+
+                        Snackbar.make(
+                            binding.editRegisterCorreo,
+                            "Las contraseñas no son iguales",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    Snackbar.make(
+                        binding.editRegisterCorreo,
+                        "La contraseña debe tener 6 carácteres mínimo",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
 
 
-            val ref = database.getReference("usuarios")
+                }
+
+            } else {
+                Snackbar.make(
+                    binding.editRegisterCorreo,
+                    "Por favor, rellene todos los campos correctamente",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+
+            /*val ref = database.getReference("usuarios")
 
             var usuario: Usuario;
 
@@ -79,88 +132,41 @@ class RegisterFragment : Fragment() {
 
                 override fun onCancelled(error: DatabaseError) {
                 }
-            })
-
-                    if (!binding.editRegisterCorreo.text.isNullOrBlank()&&!binding.editRegisterUsuario.text.isNullOrBlank()&&!binding.editRegisterPassword.text.isNullOrBlank()&&!binding.editRegisterRepetir.text.isNullOrBlank())
-                    {
-
-                        if (binding.editRegisterPassword.text.toString() == binding.editRegisterRepetir.text.toString()) {
-
-                            if (!auth.createUserWithEmailAndPassword(
-                                    binding.editRegisterCorreo.text.toString(),
-                                    binding.editRegisterPassword.text.toString()
-                                ).isSuccessful
-                            ) {
-
-                                Snackbar.make(
-                                    binding.editRegisterCorreo,
-                                    "El usuario se ha creado correctamente",
-                                    Snackbar.LENGTH_SHORT
-                                ).show()
-
-                                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-
-                            } else {
-                                Snackbar.make(
-                                    binding.editRegisterCorreo,
-                                    "El usuario no se ha creado correctamente",
-                                    Snackbar.LENGTH_SHORT
-                                ).show()
-                            }
-
-                        } else {
-
-                            Snackbar.make(
-                                binding.editRegisterCorreo, "Las contraseñas no son iguales",
-                                Snackbar.LENGTH_SHORT
-                            ).show()
-
-                        }
-
-                    }else
-                    {
-                        Snackbar.make(
-                            binding.editRegisterCorreo, "Por favor, rellene todos los campos",
-                            Snackbar.LENGTH_SHORT
-                        ).show()
-                    }
+            })*/
 
 
-                    //Comprobar porque se genera el error con esta sentencia
-                    //(Posiblemente sea por el onCreateSucces())
-                    /*auth.createUserWithEmailAndPassword(
-                        binding.editRegisterCorreo.text.toString(),
-                        binding.editRegisterPassword.text.toString()
-                    ).addOnCompleteListener {
+            //Comprobar porque se genera el error con esta sentencia
+            //(Posiblemente sea por el onCreateSucces())
+            /*auth.createUserWithEmailAndPassword(
+                binding.editRegisterCorreo.text.toString(),
+                binding.editRegisterPassword.text.toString()
+            ).addOnCompleteListener {
 
-                        if (it.isSuccessful) {
-                            val bundle = Bundle()
-                            bundle.putString("correo", binding.editRegisterCorreo.text.toString())
-                            bundle.putString("password", binding.editRegisterPassword.text.toString())
+                if (it.isSuccessful) {
+                    val bundle = Bundle()
+                    bundle.putString("correo", binding.editRegisterCorreo.text.toString())
+                    bundle.putString("password", binding.editRegisterPassword.text.toString())
 
-                            Snackbar.make(
-                                binding.editRegisterCorreo, "Usuario creado correctamente",
-                                Snackbar.LENGTH_SHORT
-                            ).show()
+                    Snackbar.make(
+                        binding.editRegisterCorreo, "Usuario creado correctamente",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
 
-                            findNavController().navigate( R.id.action_SecondFragment_to_FirstFragment,
-                                bundle
-                            )
-                        } else {
-                            Snackbar.make(
-                                binding.editRegisterCorreo, "El correo ya tiene una cuenta asignada",
-                                Snackbar.LENGTH_SHORT
-                            ).show()
-                        }
-
-                    }*/
-
-
+                    findNavController().navigate( R.id.action_SecondFragment_to_FirstFragment,
+                        bundle
+                    )
+                } else {
+                    Snackbar.make(
+                        binding.editRegisterCorreo, "El correo ya tiene una cuenta asignada",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
-        }
-
-        override fun onDestroyView() {
-            super.onDestroyView()
-            _binding = null
+            }*/
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}

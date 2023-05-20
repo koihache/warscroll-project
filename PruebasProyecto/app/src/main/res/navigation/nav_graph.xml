@@ -39,4 +39,9 @@
         android:name="com.example.pruebasproyecto.SecondActivity"
         android:label="activity_second"
         tools:layout="@layout/activity_second" />
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.example.pruebasproyecto.InicioFragment"
+        android:label="fragment_inicio"
+        tools:layout="@layout/fragment_inicio" />
 </navigation>

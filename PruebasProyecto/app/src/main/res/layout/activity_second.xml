@@ -7,20 +7,23 @@
     tools:context=".SecondActivity">
 
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/fragment_inicio"></include>
+        <fragment android:name="com.example.pruebasproyecto.InicioFragment"
+            android:id="@+id/fragmentInicio"
+            tools:layout="@layout/fragment_inicio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    </LinearLayout>
+    </FrameLayout>
 
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,11 +32,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <include
-            layout="@layout/fragment_menu"
-            app:layout_constraintBottom_toBottomOf="parent"></include>
+        <fragment android:name="com.example.pruebasproyecto.MenuFragment"
+            android:id="@+id/fragmentMenu"
+            tools:layout="@layout/fragment_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    </LinearLayout>
+    </FrameLayout>
 
 
 

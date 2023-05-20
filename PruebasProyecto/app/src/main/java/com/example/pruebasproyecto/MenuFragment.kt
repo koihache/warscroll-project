@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.pruebasproyecto.databinding.FragmentInicioBinding
 import com.example.pruebasproyecto.databinding.FragmentMenuBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -19,8 +20,8 @@ class MenuFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_menu, container, false);
-
+        _binding = FragmentMenuBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 

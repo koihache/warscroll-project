@@ -27,6 +27,8 @@ class MenuFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        //Pruebas
         binding.button.setOnClickListener {
 
             binding.button.setText("Hola")

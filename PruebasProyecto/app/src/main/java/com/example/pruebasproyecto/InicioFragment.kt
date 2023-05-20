@@ -33,6 +33,7 @@ class InicioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Pruebas
         binding.textInicioBienvenida.text = "correo";
 
     }

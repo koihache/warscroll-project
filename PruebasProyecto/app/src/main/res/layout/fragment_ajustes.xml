@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AjustesFragment"
+    android:background="@drawable/fondoajustes">
+
+
+    <Button
+        android:id="@+id/boton_ajustes_verperfil"
+        android:textSize="@dimen/tamanio_texto_botones_ajustes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Ver perfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/boton_ajustes_cookies"
+        android:textSize="@dimen/tamanio_texto_botones_ajustes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Cookies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_verperfil" />
+
+    <Button
+        android:id="@+id/boton_ajustes_terminos"
+        android:textSize="@dimen/tamanio_texto_botones_ajustes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Terminos y Condiciones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_cookies" />
+    <Button
+        android:id="@+id/boton_ajustes_datos"
+        android:textSize="@dimen/tamanio_texto_botones_ajustes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Borrar datos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_terminos" />
+    <Button
+        android:id="@+id/boton_ajustes_notificaciones"
+        android:textSize="@dimen/tamanio_texto_botones_ajustes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Notificaciones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_datos" />
+    <Button
+        android:id="@+id/boton_ajustes_cerrarsesion"
+        android:textSize="@dimen/tamanio_texto_botones_ajustes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Cerrar Sesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_notificaciones" />
+    <TextView
+        android:id="@+id/label_login_copy"
+        android:textColor="@color/color5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="12sp"
+        android:text="@string/copyrigth"
+        android:fontFamily="@font/kanit_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

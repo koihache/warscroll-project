@@ -6,5 +6,7 @@
 
     <dimen name="tamanio_titulo_fragments">25sp</dimen>
 
+    <dimen name="tamanio_texto_botones_ajustes">18sp</dimen>
+
 
 </resources>

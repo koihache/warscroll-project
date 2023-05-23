@@ -14,7 +14,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
-
     <!-- Strings para los nombres provisionales del menú-->
 
     <string name="menu_inicio">INICIO</string>
@@ -32,7 +31,7 @@
 
 
     <!-- Strings para el fragment login -->
-    
+
     <string name="login_label">¿Ya tienes una cuenta?</string>
     <string name="login_boton_iniciar">Iniciar sesión</string>
     <string name="login_boton_registrar">Registrarse</string>
@@ -48,6 +47,8 @@
     <!-- String para el copyrigth de la aplicación -->
 
     <string name="copyrigth">© 2023 WarScroll. Todos los derechos reservados. </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

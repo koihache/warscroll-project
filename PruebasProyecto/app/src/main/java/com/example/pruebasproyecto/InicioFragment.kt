@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.pruebasproyecto.databinding.FragmentInicioBinding
 
 class InicioFragment : Fragment() {
@@ -35,6 +36,7 @@ class InicioFragment : Fragment() {
 
         //Pruebas
         binding.textInicioBienvenida.text = "correo";
+
 
     }
 

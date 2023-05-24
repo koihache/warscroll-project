@@ -9,7 +9,7 @@
     android:padding="15dp">
 
     <Button
-        android:id="@+id/boton_ajustes_verperfil"
+        android:id="@+id/boton_inicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu_inicio"
@@ -18,27 +18,27 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/boton_minis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu_minis"
-        app:layout_constraintStart_toEndOf="@+id/boton_ajustes_verperfil"
+        app:layout_constraintStart_toEndOf="@+id/boton_inicio"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/boton_favoritos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu_favoritos"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/boton_minis"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/boton_ajustes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu_ajustes"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/boton_favoritos"
         app:layout_constraintTop_toTopOf="parent" />
 
 

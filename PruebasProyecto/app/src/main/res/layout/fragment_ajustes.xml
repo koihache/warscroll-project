@@ -10,7 +10,7 @@
 
 
     <Button
-        android:id="@+id/boton_ajustes_verperfil"
+        android:id="@+id/boton_ajustes_perfil"
         android:textSize="@dimen/tamanio_texto_botones_ajustes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,64 +19,47 @@
         android:text="Ver perfil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/boton_ajustes_cookies"
-        android:textSize="@dimen/tamanio_texto_botones_ajustes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/kanit_regular"
-        android:text="Cookies"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_verperfil" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/color5"
+        android:textColor="@color/color1"/>
 
     <Button
         android:id="@+id/boton_ajustes_terminos"
         android:textSize="@dimen/tamanio_texto_botones_ajustes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/kanit_regular"
         android:text="Terminos y Condiciones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_cookies" />
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_perfil"
+        android:backgroundTint="@color/color5"
+        android:textColor="@color/color1"/>
     <Button
         android:id="@+id/boton_ajustes_datos"
         android:textSize="@dimen/tamanio_texto_botones_ajustes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/kanit_regular"
         android:text="Borrar datos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_terminos" />
-    <Button
-        android:id="@+id/boton_ajustes_notificaciones"
-        android:textSize="@dimen/tamanio_texto_botones_ajustes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/kanit_regular"
-        android:text="Notificaciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_datos" />
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_terminos"
+        android:backgroundTint="@color/color5"
+        android:textColor="@color/color1"/>
+
     <Button
         android:id="@+id/boton_ajustes_cerrarsesion"
         android:textSize="@dimen/tamanio_texto_botones_ajustes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/kanit_regular"
         android:text="Cerrar Sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_notificaciones" />
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_datos"
+        android:backgroundTint="@color/color5"
+        android:textColor="@color/color1"/>
     <TextView
         android:id="@+id/label_login_copy"
         android:textColor="@color/color5"

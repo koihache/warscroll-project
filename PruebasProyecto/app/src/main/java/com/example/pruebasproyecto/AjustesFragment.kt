@@ -21,25 +21,28 @@ class AjustesFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        acciones();
+
         _binding = FragmentAjustesBinding.inflate(inflater, container, false)
         return binding.root
 
+        acciones();
     }
 
     private fun acciones() {
-        binding.botonAjustesVerperfil.setOnClickListener {
+        /*binding.botonAjustesVerperfil.setOnClickListener {
             DialogoPerfil()
-        }
+        }*/
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //prueba
+
     }
 }

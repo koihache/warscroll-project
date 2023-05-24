@@ -44,6 +44,15 @@
     <string name="register_crear_cuenta">Crear cuenta</string>
 
 
+    <!-- Strings para el fragment ajustes -->
+
+    <string name="perfil_boton_label">Ver Perfil</string>
+    <string name="password_boton_label">Cambiar Contraseña</string>
+    <string name="termino_boton_label">Términos y Condiciones</string>
+    <string name="borrardatos_boton_label">Borrar Datos</string>
+    <string name="cerrarsesion_boton_label">Cerrar Sesión</string>
+
+
     <!-- String para el copyrigth de la aplicación -->
 
     <string name="copyrigth">© 2023 WarScroll. Todos los derechos reservados. </string>

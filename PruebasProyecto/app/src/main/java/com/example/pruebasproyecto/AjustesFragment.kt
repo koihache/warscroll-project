@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.pruebasproyecto.databinding.FragmentAjustesBinding
 import com.example.pruebasproyecto.dialog.DialogoPerfil
 
-class AjustesFragment: Fragment() {
+class AjustesFragment: Fragment(), View.OnClickListener {
 
     private var _binding: FragmentAjustesBinding? = null
 
@@ -25,14 +26,9 @@ class AjustesFragment: Fragment() {
         _binding = FragmentAjustesBinding.inflate(inflater, container, false)
         return binding.root
 
-        acciones();
+        //acciones();
     }
 
-    private fun acciones() {
-        /*binding.botonAjustesVerperfil.setOnClickListener {
-            DialogoPerfil()
-        }*/
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -45,4 +41,15 @@ class AjustesFragment: Fragment() {
         //prueba
 
     }
+    private fun acciones() {
+        /*binding.botonAjustesPerfil.setOnClickListener {
+
+        }*/
+    }
+
+    override fun onClick(p0: View?) {
+        TODO("Not yet implemented")
+    }
+
+
 }

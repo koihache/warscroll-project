@@ -24,6 +24,7 @@ class InicioFragment : Fragment() {
         _binding = FragmentInicioBinding.inflate(inflater, container, false)
         return binding.root
 
+
     }
 
     override fun onAttach(context: Context) {
@@ -39,6 +40,7 @@ class InicioFragment : Fragment() {
 
 
     }
+
 
 
 }

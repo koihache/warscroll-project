@@ -41,7 +41,6 @@ class LoginFragment : Fragment() {
 
     }
 
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
@@ -57,48 +56,56 @@ class LoginFragment : Fragment() {
         //Si no están vacios los campos rellenados anteriormente por el register
         //los pone en los edit para facilitar el usuario el inicio de la sesión
 
-
-        if (correo.isNullOrEmpty()||password.isNullOrEmpty()){
+        if (!correo.isNullOrEmpty() && !password.isNullOrEmpty()){
             binding.editLoginCorreo.setText(correo)
             binding.editLoginPassword.setText(password)
         }
 
+        //Controlamos la pulsación del botón Iniciar Sesión
         binding.botonLogin.setOnClickListener{
 
-            auth.signInWithEmailAndPassword(
-                binding.editLoginCorreo.text.toString(),
-                binding.editLoginPassword.text.toString()
-            ).addOnCompleteListener {
+            if(!binding.editLoginCorreo.text.isNullOrBlank() && !binding.editLoginPassword.text.isNullOrBlank()){
 
-                if (it.isSuccessful) {
-                    val bundle = Bundle()
-                    bundle.putString("nombre", binding.editLoginCorreo.text.toString())
-                    bundle.putString("uid", auth.uid)
+                //Mediante el auth, solicitamos iniciar sesión a Firebase
+                auth.signInWithEmailAndPassword(
+                    binding.editLoginCorreo.text.toString(),
+                    binding.editLoginPassword.text.toString()
+                ).addOnCompleteListener {
 
-                    Snackbar.make(
-                        binding.botonLogin, "Sesión iniciada correctamente",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    if (it.isSuccessful) {
+                        val bundle = Bundle()
+                        bundle.putString("nombre", binding.editLoginCorreo.text.toString())
+                        bundle.putString("uid", auth.uid)
 
-                    findNavController().navigate(
-                        //TODO nombre del metodo del nav,
-                        R.id.action_Login_to_SecondActivity,
-                        bundle
-                    )
-                } else {
-                    Snackbar.make(
-                        binding.botonLogin, "Usuario o contraseña introducidos no correctos",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                        Snackbar.make(
+                            binding.botonLogin, "Sesión iniciada correctamente",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+
+                        findNavController().navigate(
+                            // nombre del metodo del nav,
+                            R.id.action_Login_to_SecondActivity,
+                            bundle
+                        )
+                    } else {
+                        Snackbar.make(
+                            binding.botonLogin, "Usuario o contraseña introducidos no correctos",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-
+            }else{
+                Snackbar.make(
+                    binding.editLoginCorreo,
+                    "Rellene todos los campos necesarios",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
-
         }
 
+        //Te dirije directamente a crear una cuenta
         binding.botonRegistrar.setOnClickListener {
             findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
         }
-
     }
 }

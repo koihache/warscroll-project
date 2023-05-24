@@ -35,12 +35,10 @@ class RegisterFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +46,8 @@ class RegisterFragment : Fragment() {
 
         //Creo que no hace falta traer esto aqui
         database =
-            Firebase.database("https://fir-develop-2730d-default-rtdb.europe-west1.firebasedatabase.app/")
+            Firebase.database("https://fir-warscroll-default-rtdb.firebaseio.com/")
+
         auth = Firebase.auth
 
         binding.botonCrearcuenta.setOnClickListener {
@@ -57,17 +56,14 @@ class RegisterFragment : Fragment() {
                 if (binding.editRegisterPassword.text.toString().length > 5) {
                     if (binding.editRegisterPassword.text.toString() == binding.editRegisterRepetir.text.toString()) {
 
-                        var comprobacion = auth.createUserWithEmailAndPassword(
-                            binding.editRegisterCorreo.text.toString(),
-                            binding.editRegisterPassword.text.toString()
-                        ).isSuccessful
+                        if (auth.createUserWithEmailAndPassword(binding.editRegisterCorreo.text.toString(), binding.editRegisterPassword.text.toString())
+                                .isSuccessful) {
 
-                        if (comprobacion) {
-                            auth.createUserWithEmailAndPassword(
+                            //TODO Revisar si funciona en portatil (con la sentencia del if vale o no)
+                            /*auth.createUserWithEmailAndPassword(
                                 binding.editRegisterCorreo.text.toString(),
                                 binding.editRegisterPassword.text.toString()
-                            )
-
+                            )*/
                             Snackbar.make(
                                 binding.editRegisterCorreo,
                                 "El usuario se ha creado correctamente",
@@ -82,7 +78,6 @@ class RegisterFragment : Fragment() {
                                 Snackbar.LENGTH_SHORT
                             ).show()
                         }
-
                     } else {
 
                         Snackbar.make(
@@ -97,10 +92,7 @@ class RegisterFragment : Fragment() {
                         "La contraseña debe tener 6 carácteres mínimo",
                         Snackbar.LENGTH_SHORT
                     ).show()
-
-
                 }
-
             } else {
                 Snackbar.make(
                     binding.editRegisterCorreo,

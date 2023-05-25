@@ -16,9 +16,9 @@ class InicioFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var usuario: Usuario
+    //private lateinit var usuario: Usuario
 
-    companion object{
+    /*companion object{
         fun newInstance(usuario : Usuario):InicioFragment {
             val args = Bundle()
             val fragment = InicioFragment()
@@ -26,7 +26,7 @@ class InicioFragment : Fragment() {
             fragment.arguments = args
             return fragment
         }
-    }
+    }*/
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +39,7 @@ class InicioFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        usuario = arguments?.getSerializable("usuario") as Usuario
+        //usuario = arguments?.getSerializable("usuario") as Usuario
 
         }
 
@@ -47,7 +47,7 @@ class InicioFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Pruebas
-        binding.textInicioBienvenida.text = usuario.correo;
+        //binding.textInicioBienvenida.text = usuario.correo;
 
 
     }

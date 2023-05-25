@@ -47,7 +47,3 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener {
 
     }
 }
-
-private fun FragmentTransaction.replace(id: Int, minisFragment: MinisFragment) {
-    TODO("Not yet implemented")
-}

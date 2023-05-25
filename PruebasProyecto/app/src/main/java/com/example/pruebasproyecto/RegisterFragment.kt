@@ -43,7 +43,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //TODO revisar funcionalidad correcta
         //Creo que no hace falta traer esto aqui
         database =
             Firebase.database("https://fir-warscroll-default-rtdb.firebaseio.com/")
@@ -51,6 +51,7 @@ class RegisterFragment : Fragment() {
         auth = Firebase.auth
 
         binding.botonCrearcuenta.setOnClickListener {
+
 
             if (!binding.editRegisterCorreo.text.isNullOrBlank() && !binding.editRegisterUsuario.text.isNullOrBlank() && !binding.editRegisterPassword.text.isNullOrBlank() && !binding.editRegisterRepetir.text.isNullOrBlank()) {
                 if (binding.editRegisterPassword.text.toString().length > 5) {

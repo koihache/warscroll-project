@@ -9,7 +9,11 @@
     android:padding="15dp">
 
     <Button
+<<<<<<< Updated upstream
         android:id="@+id/boton_inicio"
+=======
+        android:id="@+id/boton_menu_home"
+>>>>>>> Stashed changes
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu_inicio"
@@ -18,6 +22,7 @@
 
 
     <Button
+<<<<<<< Updated upstream
         android:id="@+id/boton_minis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,6 +44,29 @@
         android:layout_height="wrap_content"
         android:text="@string/menu_ajustes"
         app:layout_constraintStart_toEndOf="@+id/boton_favoritos"
+=======
+        android:id="@+id/boton_menu_minis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_minis"
+        app:layout_constraintStart_toEndOf="@+id/boton_menu_home"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/boton_menu_favoritos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_favoritos"
+        app:layout_constraintStart_toEndOf="@+id/boton_menu_minis"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/boton_menu_ajustes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_ajustes"
+        app:layout_constraintStart_toEndOf="@+id/boton_menu_favoritos"
+>>>>>>> Stashed changes
         app:layout_constraintTop_toTopOf="parent" />
 
 

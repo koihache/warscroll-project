@@ -48,11 +48,20 @@ class MenuFragment: Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //TODO cambiar id buttons menu abajo,cambiar texto por iconos(imgbutton)
+        //TODO navgraph crear nuevo para minis y linkear
+
+        //TODO revisar origen y destino del menu
 
         //Pruebas
+<<<<<<< Updated upstream
+=======
+        /*binding.button.setOnClickListener {
+>>>>>>> Stashed changes
 
         /*binding.botonAjustes.setOnClickListener {
 
+<<<<<<< Updated upstream
             var fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
             fragmentTransaction.replace(actividad. .id, FragmentInicial())
         }*/
@@ -68,6 +77,9 @@ class MenuFragment: Fragment(){
         binding.botonAjustes.setOnClickListener {
             listener.onCambioSelected(4)
         }
+=======
+        }*/
+>>>>>>> Stashed changes
     }
 
     interface OnCambioListener{

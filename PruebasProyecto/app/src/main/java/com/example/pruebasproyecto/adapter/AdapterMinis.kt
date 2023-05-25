@@ -7,26 +7,25 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pruebasproyecto.R
-import com.example.pruebasproyecto.model.Minis
+import com.example.pruebasproyecto.model.Perfil
 
-class AdapterMinis(var listaMinis:List<Minis>) : RecyclerView.Adapter<AdapterMinis.MyHolder>() {
-    //TODO cambiar fuente letra recycler
+class AdapterMinis(var listaMinis:List<Perfil>) : RecyclerView.Adapter<AdapterMinis.MyHolder>() {
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var nombre:TextView
-        var imagen: ImageView
+        var nombre : TextView
+        //var imagen: ImageView
 
         init {
             nombre = itemView.findViewById(R.id.recycler_item_text)
-            imagen = itemView.findViewById(R.id.recycler_item_imagen)
+            //imagen = itemView.findViewById(R.id.recycler_item_imagen)
         }
     }
-    fun addMini(minis: Minis){
-        (listaMinis as ArrayList<Minis>).add(minis)
+    fun addMini(minis: Perfil){
+        (listaMinis as ArrayList<Perfil>).add(minis)
         notifyItemInserted(listaMinis.size-1)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_minis, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_perfil, parent, false)
         return MyHolder(view)
     }
 

@@ -1,4 +1,10 @@
 package com.example.pruebasproyecto.model
 
-class Perfil (var idMini: Int, var nombre: String,var especie: String, var universo: String, var nMinis: Int, var imagen: String) {
+data class Perfil(var especie:String?=null,
+                  var idMini:Int?=null,
+                  var imagen:String?=null,
+                  var nMinis: Int?=null,
+                  var nombrePerfil:String?=null,
+                  var universo:String?=null) {
+
 }

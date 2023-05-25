@@ -3,6 +3,7 @@ package com.example.pruebasproyecto
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.pruebasproyecto.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener {
@@ -30,7 +31,7 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener {
                 fragmentTransaction.addToBackStack("f1_inicio")
             }
             2 -> {
-                fragmentTransaction.replace(binding.frameLayoutFragments.id, InicioFragment())
+                fragmentTransaction.replace(binding.frameLayoutFragments.id,MinisFragment())
                 fragmentTransaction.addToBackStack("f2_minis")
             }
             3 -> {
@@ -45,4 +46,8 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener {
         fragmentTransaction.commit();
 
     }
+}
+
+private fun FragmentTransaction.replace(id: Int, minisFragment: MinisFragment) {
+    TODO("Not yet implemented")
 }

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.pruebasproyecto.databinding.FragmentMenuBinding
 
@@ -44,15 +45,32 @@ class MenuFragment: Fragment(){
 
         binding.botonInicio.setOnClickListener {
             listener.onCambioSelected(1)
+            binding.estadoBotonInicio.isVisible = true
+            binding.estadoBotonMinis.isVisible = false
+            binding.estadoBotonFavoritos.isVisible = false
+            binding.estadoBotonAjustes.isVisible = false
+
         }
         binding.botonMinis.setOnClickListener {
             listener.onCambioSelected(2)
+            binding.estadoBotonInicio.isVisible = false
+            binding.estadoBotonMinis.isVisible = true
+            binding.estadoBotonFavoritos.isVisible = false
+            binding.estadoBotonAjustes.isVisible = false
         }
         binding.botonFavoritos.setOnClickListener {
             listener.onCambioSelected(3)
+            binding.estadoBotonInicio.isVisible = false
+            binding.estadoBotonMinis.isVisible = false
+            binding.estadoBotonFavoritos.isVisible = true
+            binding.estadoBotonAjustes.isVisible = false
         }
         binding.botonAjustes.setOnClickListener {
             listener.onCambioSelected(4)
+            binding.estadoBotonInicio.isVisible = false
+            binding.estadoBotonMinis.isVisible = false
+            binding.estadoBotonFavoritos.isVisible = false
+            binding.estadoBotonAjustes.isVisible = true
         }
     }
 

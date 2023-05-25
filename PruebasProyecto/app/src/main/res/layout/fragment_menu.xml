@@ -6,48 +6,134 @@
     android:layout_height="wrap_content"
     tools:context=".MenuFragment"
     android:background="@color/color1"
-    android:paddingLeft="20dp">
+    android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/boton_inicio"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:textAlignment="center"
         android:layout_height="wrap_content"
-        android:text="@string/menu_inicio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"
-        android:padding="20dp"/>
+        android:orientation="vertical">
 
-    
-    <Button
-        android:id="@+id/boton_minis"
+
+
+        <Button
+            android:id="@+id/boton_inicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="20dp"
+            android:text="@string/menu_inicio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/estado_boton_inicio"
+            tools:visibility="visible"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:background="@color/color5"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu_minis"
-        app:layout_constraintStart_toEndOf="@+id/boton_inicio"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"
-        android:padding="20dp"/>
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/boton_favoritos"
+
+        <Button
+            android:id="@+id/boton_minis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="20dp"
+            android:text="@string/menu_minis"
+            app:layout_constraintStart_toEndOf="@+id/boton_inicio"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/estado_boton_minis"
+            tools:visibility="visible"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:background="@color/color5"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu_favoritos"
-        app:layout_constraintStart_toEndOf="@+id/boton_minis"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"
-        android:padding="20dp"/>
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/boton_ajustes"
+        <Button
+            android:id="@+id/boton_favoritos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="20dp"
+            android:text="@string/menu_favoritos"
+            app:layout_constraintStart_toEndOf="@+id/boton_minis"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/estado_boton_favoritos"
+            tools:visibility="visible"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:background="@color/color5"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu_ajustes"
-        app:layout_constraintStart_toEndOf="@+id/boton_favoritos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"
-        android:padding="20dp"/>
+        android:orientation="vertical">
 
+        <Button
+            android:id="@+id/boton_ajustes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="20dp"
+            android:text="@string/menu_ajustes"
+            app:layout_constraintStart_toEndOf="@+id/boton_favoritos"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/estado_boton_ajustes"
+            tools:visibility="visible"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:background="@color/color5"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/color5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

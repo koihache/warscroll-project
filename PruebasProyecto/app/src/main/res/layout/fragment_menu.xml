@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     tools:context=".MenuFragment"
     android:background="@color/color1"
-    android:padding="15dp">
+    android:paddingLeft="20dp">
 
     <Button
         android:id="@+id/boton_inicio"
@@ -14,16 +14,20 @@
         android:layout_height="wrap_content"
         android:text="@string/menu_inicio"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/transparent"
+        android:padding="20dp"/>
 
-
+    
     <Button
         android:id="@+id/boton_minis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu_minis"
         app:layout_constraintStart_toEndOf="@+id/boton_inicio"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/transparent"
+        android:padding="20dp"/>
 
     <Button
         android:id="@+id/boton_favoritos"
@@ -31,7 +35,9 @@
         android:layout_height="wrap_content"
         android:text="@string/menu_favoritos"
         app:layout_constraintStart_toEndOf="@+id/boton_minis"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/transparent"
+        android:padding="20dp"/>
 
     <Button
         android:id="@+id/boton_ajustes"
@@ -39,7 +45,9 @@
         android:layout_height="wrap_content"
         android:text="@string/menu_ajustes"
         app:layout_constraintStart_toEndOf="@+id/boton_favoritos"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/transparent"
+        android:padding="20dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

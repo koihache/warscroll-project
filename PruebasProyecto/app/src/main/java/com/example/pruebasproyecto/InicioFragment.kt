@@ -36,7 +36,7 @@ class InicioFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Pruebas
-        binding.textInicioBienvenida.text = "correo";
+        binding.textInicioBienvenida.text = correo;
 
 
     }

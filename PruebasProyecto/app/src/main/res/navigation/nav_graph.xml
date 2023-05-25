@@ -52,5 +52,9 @@
         android:id="@+id/ajustesFragment"
         android:name="com.example.pruebasproyecto.AjustesFragment"
         android:label="fragment_ajustes"
-        tools:layout="@layout/fragment_ajustes" />
+        tools:layout="@layout/fragment_ajustes" >
+        <action
+            android:id="@+id/action_ajustesFragment_to_inicioFragment"
+            app:destination="@id/inicioFragment" />
+    </fragment>
 </navigation>

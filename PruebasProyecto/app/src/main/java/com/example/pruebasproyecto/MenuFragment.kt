@@ -1,21 +1,13 @@
 package com.example.pruebasproyecto
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ServiceCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.pruebasproyecto.databinding.FragmentInicioBinding
 import com.example.pruebasproyecto.databinding.FragmentMenuBinding
-import com.google.android.material.snackbar.Snackbar
 
 class MenuFragment: Fragment(){
 
@@ -48,23 +40,8 @@ class MenuFragment: Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO cambiar id buttons menu abajo,cambiar texto por iconos(imgbutton)
-        //TODO navgraph crear nuevo para minis y linkear
-
-        //TODO revisar origen y destino del menu
-
         //Pruebas
-<<<<<<< Updated upstream
-=======
-        /*binding.button.setOnClickListener {
->>>>>>> Stashed changes
 
-        /*binding.botonAjustes.setOnClickListener {
-
-<<<<<<< Updated upstream
-            var fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction.replace(actividad. .id, FragmentInicial())
-        }*/
         binding.botonInicio.setOnClickListener {
             listener.onCambioSelected(1)
         }
@@ -77,9 +54,6 @@ class MenuFragment: Fragment(){
         binding.botonAjustes.setOnClickListener {
             listener.onCambioSelected(4)
         }
-=======
-        }*/
->>>>>>> Stashed changes
     }
 
     interface OnCambioListener{

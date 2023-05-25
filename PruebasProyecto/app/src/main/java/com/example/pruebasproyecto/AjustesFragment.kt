@@ -41,11 +41,11 @@ class AjustesFragment: Fragment(), View.OnClickListener {
         //prueba
 
     }
-    private fun acciones() {
-        /*binding.botonAjustesPerfil.setOnClickListener {
-
-        }*/
-    }
+    /*private fun acciones() {
+        binding.botonAjustesPerfil.setOnClickListener {
+            DialogoPerfil().show()
+        }
+    }*/
 
     override fun onClick(p0: View?) {
         TODO("Not yet implemented")

@@ -32,7 +32,7 @@ class MinisFragment : Fragment() {
 
         _binding = FragmentMinisBinding.inflate(inflater, container, false)
 
-        adapterMinis = AdapterMinis(ArrayList<Perfil>())
+        adapterMinis = AdapterMinis(ArrayList<Perfil>(),requireContext())
         binding.recyclerMinis.adapter = adapterMinis
         binding.recyclerMinis.layoutManager = LinearLayoutManager(activity?.applicationContext,LinearLayoutManager.VERTICAL,false)
 

@@ -1,22 +1,25 @@
 package com.example.pruebasproyecto.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pruebasproyecto.R
 import com.example.pruebasproyecto.model.Perfil
 
-class AdapterMinis(var listaMinis:List<Perfil>) : RecyclerView.Adapter<AdapterMinis.MyHolder>() {
+class AdapterMinis(var listaMinis:List<Perfil>,var contexto:Context) : RecyclerView.Adapter<AdapterMinis.MyHolder>() {
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var nombre : TextView
-        //var imagen: ImageView
+        var imagen: ImageView
+
 
         init {
             nombre = itemView.findViewById(R.id.recycler_item_text)
-            //imagen = itemView.findViewById(R.id.recycler_item_imagen)
+            imagen = itemView.findViewById(R.id.recycler_item_imagen)
         }
     }
     fun addMini(minis: Perfil){
@@ -32,7 +35,7 @@ class AdapterMinis(var listaMinis:List<Perfil>) : RecyclerView.Adapter<AdapterMi
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val mini = listaMinis[position]
         holder.nombre.text = mini.nombrePerfil
-        //holder.imagen = mini.imagen
+        Glide.with(contexto).load(mini.imagen).into(holder.imagen)
     }
 
     override fun getItemCount(): Int {

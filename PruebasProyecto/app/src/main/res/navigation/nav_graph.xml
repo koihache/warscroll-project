@@ -17,6 +17,14 @@
         <action
             android:id="@+id/action_Login_to_SecondActivity"
             app:destination="@id/SecondActivity" />
+
+        <argument
+            android:name="correo"
+            app:argType="string" />
+        <argument
+            android:name="contrasenia"
+            app:argType="string" />
+
     </fragment>
     <fragment
         android:id="@+id/RegisterFragment"
@@ -27,18 +35,17 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/LoginFragment" />
-        <argument
-            android:name="correo"
-            app:argType="string" />
-        <argument
-            android:name="contrasenia"
-            app:argType="string" />
+
     </fragment>
     <activity
         android:id="@+id/SecondActivity"
         android:name="com.example.pruebasproyecto.SecondActivity"
         android:label="activity_second"
-        tools:layout="@layout/activity_second" />
+        tools:layout="@layout/activity_second" >
+        <argument
+            android:name="usuario"
+            app:argType="com.example.pruebasproyecto.model.Usuario" />
+    </activity>
     <fragment
         android:id="@+id/inicioFragment"
         android:name="com.example.pruebasproyecto.InicioFragment"

@@ -70,7 +70,10 @@ class RegisterFragment : Fragment() {
                                 "El usuario se ha creado correctamente",
                                 Snackbar.LENGTH_SHORT
                             ).show()
-                            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+                            val bundle = Bundle()
+                            bundle.putString("correo", binding.editRegisterCorreo.text.toString())
+                            bundle.putString("password", binding.editRegisterPassword.text.toString())
+                            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
 
                         } else {
                             Snackbar.make(

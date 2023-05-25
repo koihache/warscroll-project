@@ -8,14 +8,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.pruebasproyecto.databinding.FragmentInicioBinding
+import com.example.pruebasproyecto.model.Usuario
 
 class InicioFragment : Fragment() {
 
     private var _binding: FragmentInicioBinding? = null
 
     private val binding get() = _binding!!
-    private lateinit var correo: String
 
+    private lateinit var usuario: Usuario
+
+    companion object{
+        fun newInstance(usuario : Usuario):InicioFragment {
+            val args = Bundle()
+            val fragment = InicioFragment()
+            args.putSerializable("usuario", usuario)
+            fragment.arguments = args
+            return fragment
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,20 +34,20 @@ class InicioFragment : Fragment() {
 
         _binding = FragmentInicioBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-         correo = arguments?.getString("nombre").toString()
-    }
+
+        usuario = arguments?.getSerializable("usuario") as Usuario
+
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         //Pruebas
-        binding.textInicioBienvenida.text = correo;
+        binding.textInicioBienvenida.text = usuario.correo;
 
 
     }

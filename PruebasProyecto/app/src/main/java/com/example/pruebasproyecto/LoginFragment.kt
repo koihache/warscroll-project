@@ -56,7 +56,7 @@ class LoginFragment : Fragment() {
         //Si no están vacios los campos rellenados anteriormente por el register
         //los pone en los edit para facilitar el usuario el inicio de la sesión
 
-        if (!correo.isNullOrEmpty() && !password.isNullOrEmpty()){
+        if (!(correo==null) && !(password==null)){
             binding.editLoginCorreo.setText(correo)
             binding.editLoginPassword.setText(password)
         }

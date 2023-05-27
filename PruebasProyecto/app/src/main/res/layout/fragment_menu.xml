@@ -34,7 +34,7 @@
 
         <View
             android:id="@+id/estado_boton_inicio"
-            tools:visibility="visible"
+            tools:visibility="invisible"
             android:layout_width="fill_parent"
             android:layout_height="5dp"
             android:background="@color/color5"/>
@@ -63,7 +63,7 @@
 
         <View
             android:id="@+id/estado_boton_minis"
-            tools:visibility="visible"
+            tools:visibility="invisible"
             android:layout_width="fill_parent"
             android:layout_height="5dp"
             android:background="@color/color5"/>
@@ -93,7 +93,7 @@
 
         <View
             android:id="@+id/estado_boton_favoritos"
-            tools:visibility="visible"
+            tools:visibility="invisible"
             android:layout_width="fill_parent"
             android:layout_height="5dp"
             android:background="@color/color5"/>
@@ -121,7 +121,7 @@
 
         <View
             android:id="@+id/estado_boton_ajustes"
-            tools:visibility="visible"
+            tools:visibility="invisible"
             android:layout_width="fill_parent"
             android:layout_height="5dp"
             android:background="@color/color5"/>

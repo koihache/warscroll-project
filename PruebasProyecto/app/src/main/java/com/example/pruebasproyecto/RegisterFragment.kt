@@ -60,7 +60,6 @@ class RegisterFragment : Fragment() {
                         if (auth.createUserWithEmailAndPassword(binding.editRegisterCorreo.text.toString(), binding.editRegisterPassword.text.toString())
                                 .isSuccessful) {
 
-                            //TODO Revisar si funciona en portatil (con la sentencia del if vale o no)
                             /*auth.createUserWithEmailAndPassword(
                                 binding.editRegisterCorreo.text.toString(),
                                 binding.editRegisterPassword.text.toString()

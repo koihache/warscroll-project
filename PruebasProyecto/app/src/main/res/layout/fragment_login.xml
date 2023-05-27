@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginFragment"
-    android:background="@drawable/fondologin">
+    android:background="@drawable/fondoprincipal">
 
     <TextView
         android:id="@+id/label_login"

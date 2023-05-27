@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AjustesFragment"
-    android:background="@drawable/fondoajustes">
+    android:background="@drawable/fondosecundario">
 
 
     <Button

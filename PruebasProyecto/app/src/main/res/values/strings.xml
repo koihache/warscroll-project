@@ -57,6 +57,23 @@
     <string name="inicio_bienvenida_label">Bienvenido,</string>
     <string name="inicio_boton_sabermas">Saber más</string>
 
+    <string name="inicio_carta_conoce">Conoce</string>
+
+
+    <!-- Strings para el fragment Warcry -->
+    <string name="que_es_warcry">¿Qué es Warcry?</string>
+    <string name="resumen_warcry">Warcry es un juego de escaramuzas para dos o más jugadores ambientado en Warhammer Age of Sigmar.
+
+        Es un juego rápido y fácil de empezar a jugar. Tradicionalmente se juega entre 2 o más jugadores.
+
+Los tres estilos de juego característicos de Age of Sigmar están disponibles también en Warcry: el Matched Play (o “Juego combinado”) es el más competitivo y equilibrado, el Narrative pone a tu banda de guerra en el centro de la acción creando una historia en torno a sus hazañas, y el Open Play es el más flexible permitiendo también partidas multijugador.</string>
+
+
+    <!-- Strings para el fragment Killteam -->
+    <string name="que_es_killteam">¿Qué es Killteam?</string>
+
+    <string name="resumen_killteam"></string>
+
 
 
     <!-- String para el copyrigth de la aplicación -->

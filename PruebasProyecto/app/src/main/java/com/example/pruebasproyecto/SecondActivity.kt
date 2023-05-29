@@ -17,15 +17,13 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
-class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener {
+class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, InicioFragment.OnSaberMasListener {
 
     private lateinit var binding: ActivitySecondBinding
     //private lateinit var usuario: Usuario
 
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
-
-    //private lateinit var listaUsuarios: ArrayList<Usuario>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +35,6 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener {
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
         auth = Firebase.auth
-
-        //listaUsuarios = ArrayList()
 
         //TODO Hacer una lista de usuarios y coger la primera y unica posicion
         /*dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
@@ -87,5 +83,23 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener {
             }
         }
         fragmentTransaction.commit();
+    }
+
+    override fun onSaberMasSelected(opcion: Int) {
+
+        var fragmentTransaction = supportFragmentManager.beginTransaction()
+
+        when (opcion) {
+            1 -> {
+                fragmentTransaction.replace(binding.frameLayoutFragments.id,SaberMasWarcryFragment())
+                fragmentTransaction.addToBackStack("f1_sabermas_warcry")
+            }
+            2 -> {
+                fragmentTransaction.replace(binding.frameLayoutFragments.id,SaberMasKillteamFragment())
+                fragmentTransaction.addToBackStack("f2_sabermas_killteam")
+            }
+        }
+        fragmentTransaction.commit();
+
     }
 }

@@ -31,8 +31,7 @@ class InicioFragment : Fragment() {
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
 
-    //TODO Hacer la busqueda de usuario mediante UID aqui puesto que da error en todos los envios
-    //de informacion
+    private lateinit var listener: OnSaberMasListener
 
 
     /*companion object{
@@ -59,12 +58,13 @@ class InicioFragment : Fragment() {
         super.onResume()
     }
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    //@RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        //TODO Comprobar
+        listener = context as OnSaberMasListener
 
+        //TODO Comprobar
         dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
@@ -80,13 +80,9 @@ class InicioFragment : Fragment() {
                         //TODO Revisar porque no puedo sacar el valor
                         //TODO usuario fuera de la sentencia de la bdd
                         binding.textInicioNombreUsuario.text = usuario!!.usuario;
-
                     }
                 }
-
                 override fun onCancelled(error: DatabaseError) {
-                    Snackbar.make(binding.botonInicioSabermas1, "Cancelled", Snackbar.LENGTH_SHORT)
-                        .show()
                 }
         })
 
@@ -95,7 +91,19 @@ class InicioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //TODO Revision de lo bdd
         //binding.textInicioNombreUsuario.text = usuario!!.usuario
 
+        binding.botonInicioSabermasWarcry.setOnClickListener {
+            listener.onSaberMasSelected(1)
+        }
+
+        binding.botonInicioSabermasKillteam.setOnClickListener {
+            listener.onSaberMasSelected(2)
+        }
+    }
+
+    interface OnSaberMasListener{
+        fun onSaberMasSelected(opcion: Int)
     }
 }

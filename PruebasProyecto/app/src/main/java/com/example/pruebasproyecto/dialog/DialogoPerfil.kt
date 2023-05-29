@@ -1,5 +1,6 @@
 package com.example.pruebasproyecto.dialog
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
@@ -16,24 +17,36 @@ class DialogoPerfil: DialogFragment() {
     private lateinit var correo:EditText
     private lateinit var usuario:EditText
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         vista = LayoutInflater.from(context).inflate(R.layout.dialogo_perfil, null);
 
     }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         var  builder = AlertDialog.Builder(requireContext())
         builder.setView(vista)
-        return builder.create()
-    }
 
-    override fun onStart() {
-        super.onStart()
-        correo = vista.findViewById(R.id.dialogo_perfil_correo)
-        usuario = vista.findViewById(R.id.dialogo_perfil_usuario)
+        return builder.create()
     }
 
     override fun onResume() {
         super.onResume()
+        acciones()
+    }
+
+    private fun acciones() {
+        dismiss()
+    }
+
+    private fun instancias() {
+        correo = vista.findViewById(R.id.dialogo_perfil_correo)
+        usuario = vista.findViewById(R.id.dialogo_perfil_usuario)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        instancias()
     }
 }

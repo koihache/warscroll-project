@@ -7,50 +7,48 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.example.pruebasproyecto.databinding.FragmentAjustesBinding
+import com.example.pruebasproyecto.databinding.FragmentInicioBinding
 import com.example.pruebasproyecto.dialog.DialogoPerfil
+import com.google.android.material.snackbar.Snackbar
 
-class AjustesFragment: Fragment(), View.OnClickListener {
+class AjustesFragment: Fragment(),View.OnClickListener{
 
     private var _binding: FragmentAjustesBinding? = null
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentAjustesBinding.inflate(inflater, container, false)
+        acciones()
         return binding.root
-
-        //acciones();
-    }
-
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //prueba
 
     }
-    //TODO dialog activity a fargment callback
-    /*private fun acciones() {
+    private fun acciones() {
+        binding.botonAjustesPerfil.setOnClickListener(this)
+    }
+    override fun onClick(v: View?) {
         binding.botonAjustesPerfil.setOnClickListener {
-            DialogoPerfil().show()
+            Snackbar.make(
+                binding.botonAjustesPerfil,
+                "sedrhsdrhgyse",
+                Snackbar.LENGTH_SHORT
+            ).show()
+            DialogoPerfil().show(requireFragmentManager(),"")
+
         }
-    }*/
-
-    override fun onClick(p0: View?) {
-        TODO("Not yet implemented")
     }
-
-
 }

@@ -41,4 +41,9 @@ class AdapterMinis(var listaMinis:List<Perfil>,var contexto:Context) : RecyclerV
     override fun getItemCount(): Int {
         return listaMinis.size
     }
+
+    fun filtrar(listaFiltrada:ArrayList<Perfil>){
+        this.listaMinis = listaFiltrada
+        notifyDataSetChanged()
+    }
 }

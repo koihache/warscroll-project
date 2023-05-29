@@ -1,9 +1,12 @@
 package com.example.pruebasproyecto
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pruebasproyecto.adapter.AdapterMinis
@@ -21,6 +24,8 @@ class MinisFragment : Fragment() {
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var adapterMinis: AdapterMinis
 
+    var listaMinis = arrayListOf<Perfil>()
+
 
     private val binding get() = _binding!!
 
@@ -33,12 +38,48 @@ class MinisFragment : Fragment() {
         _binding = FragmentMinisBinding.inflate(inflater, container, false)
 
         adapterMinis = AdapterMinis(ArrayList<Perfil>(),requireContext())
+
         binding.recyclerMinis.adapter = adapterMinis
+
         binding.recyclerMinis.layoutManager = LinearLayoutManager(activity?.applicationContext,LinearLayoutManager.VERTICAL,false)
+
+        filtrarLista()
+
+        binding.recyclerFiltrar.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                filtrar(s.toString())
+            }
+
+        })
+
+
 
         return binding.root
 
     }
+
+    private fun filtrarLista() {
+        binding.recyclerMinis.layoutManager = LinearLayoutManager(requireContext())
+        adapterMinis = AdapterMinis(listaMinis, requireContext())
+        binding.recyclerMinis.adapter = adapterMinis
+    }
+    private fun filtrar(text:String){
+        var listaFiltrada = arrayListOf<Perfil>()
+
+        listaMinis.forEach {
+            if (it.nombrePerfil?.toLowerCase()?.contains(text.toLowerCase())!!){
+                listaFiltrada.add(it)
+            }
+        }
+        adapterMinis.filtrar(listaFiltrada)
+    }
+
 
     override fun onResume() {
         super.onResume()
@@ -52,6 +93,7 @@ class MinisFragment : Fragment() {
                 if (snapshot.exists()){
                     for (i in snapshot.children){
                         adapterMinis.addMini(i.getValue(Perfil::class.java) as Perfil)
+
                     }
                 }
             }

@@ -44,7 +44,6 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //TODO revisar funcionalidad correcta
-        //Creo que no hace falta traer esto aqui
         database =
             Firebase.database("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
@@ -57,21 +56,28 @@ class RegisterFragment : Fragment() {
                 if (binding.editRegisterPassword.text.toString().length > 5) {
                     if (binding.editRegisterPassword.text.toString() == binding.editRegisterRepetir.text.toString()) {
 
-                        if (auth.createUserWithEmailAndPassword(binding.editRegisterCorreo.text.toString(), binding.editRegisterPassword.text.toString())
+                        /*if (auth.createUserWithEmailAndPassword(binding.editRegisterCorreo.text.toString(), binding.editRegisterPassword.text.toString())
                                 .isSuccessful) {
 
                             /*auth.createUserWithEmailAndPassword(
                                 binding.editRegisterCorreo.text.toString(),
                                 binding.editRegisterPassword.text.toString()
                             )*/
+                            //TODO Revisar con BORJA
                             Snackbar.make(
                                 binding.editRegisterCorreo,
                                 "El usuario se ha creado correctamente",
                                 Snackbar.LENGTH_SHORT
                             ).show()
+
+                            //TODO Funcionalidad compleja
                             val bundle = Bundle()
                             bundle.putString("correo", binding.editRegisterCorreo.text.toString())
                             bundle.putString("password", binding.editRegisterPassword.text.toString())
+
+
+
+                            //Nos dirige al Login
                             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
 
                         } else {
@@ -80,7 +86,44 @@ class RegisterFragment : Fragment() {
                                 "El usuario no se ha creado correctamente",
                                 Snackbar.LENGTH_SHORT
                             ).show()
-                        }
+                            //TODO Añadir al constructor la lista de favoritos
+                            var usuarioNuevo: Usuario = Usuario(auth.uid,binding.editRegisterCorreo.text.toString(),
+                                binding.editRegisterUsuario.text.toString())
+                            database.reference.child("usuarios").child(usuarioNuevo.idUsuario!!).setValue(usuarioNuevo)
+
+                        }*/
+
+                        auth.createUserWithEmailAndPassword(binding.editRegisterCorreo.text.toString(), binding.editRegisterPassword.text.toString())
+                            .addOnCompleteListener {
+                                if (it.isSuccessful){
+                                    Snackbar.make(
+                                        binding.editRegisterCorreo,
+                                        "El usuario se ha creado correctamente",
+                                        Snackbar.LENGTH_SHORT
+                                    ).show()
+
+                                    //TODO Funcionalidad compleja
+                                    val bundle = Bundle()
+                                    bundle.putString("correo", binding.editRegisterCorreo.text.toString())
+                                    bundle.putString("password", binding.editRegisterPassword.text.toString())
+
+                                    //TODO Añadir al constructor la lista de favoritos
+                                    var usuarioNuevo: Usuario = Usuario(auth.uid,binding.editRegisterCorreo.text.toString(),
+                                        binding.editRegisterUsuario.text.toString())
+                                    database.reference.child("usuarios").child(usuarioNuevo.idUsuario!!).setValue(usuarioNuevo)
+
+                                    //Nos dirige al Login
+                                    findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
+                                } else{
+                                    Snackbar.make(
+                                        binding.editRegisterCorreo,
+                                        "El usuario no se ha creado correctamente",
+                                        Snackbar.LENGTH_SHORT
+                                    ).show()
+
+                                }
+
+                            }
                     } else {
 
                         Snackbar.make(

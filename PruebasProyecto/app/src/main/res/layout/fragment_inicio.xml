@@ -25,11 +25,11 @@
         android:id="@+id/text_inicio_nombre_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color1"
         android:fontFamily="@font/kanit_regular"
-        android:text="*nombre*"
+        android:text=""
+        android:textColor="@color/color1"
         android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/text_inicio_bienvenida"
+        app:layout_constraintStart_toStartOf="@+id/text_inicio_bienvenida"
         app:layout_constraintTop_toBottomOf="@+id/text_inicio_bienvenida" />
 
     <androidx.cardview.widget.CardView

@@ -43,8 +43,10 @@ class MinisFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        //TODO Hacer pruebas para ver si ordena de verdad
         dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
+
         dataBase.getReference("perfiles").orderByChild("name").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){

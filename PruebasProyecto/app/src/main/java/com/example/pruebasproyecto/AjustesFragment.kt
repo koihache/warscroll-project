@@ -41,6 +41,7 @@ class AjustesFragment: Fragment(), View.OnClickListener {
         //prueba
 
     }
+    //TODO dialog activity a fargment callback
     /*private fun acciones() {
         binding.botonAjustesPerfil.setOnClickListener {
             DialogoPerfil().show()

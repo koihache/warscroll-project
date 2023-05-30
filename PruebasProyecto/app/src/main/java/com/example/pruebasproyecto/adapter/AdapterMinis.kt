@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
@@ -11,21 +12,32 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pruebasproyecto.dialog.DialogoPerfil
 import com.example.pruebasproyecto.R
+import com.example.pruebasproyecto.dialog.DialogoPerfil
 import com.example.pruebasproyecto.model.Perfil
 import com.example.pruebasproyecto.model.Usuario
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
-class AdapterMinis(var listaMinis:List<Perfil>,var contexto:Context, var supporFragmentManager: FragmentManager) : RecyclerView.Adapter<AdapterMinis.MyHolder>() {
+
+class AdapterMinis(
+    var listaMinis: List<Perfil>,
+    var contexto: Context,
+    var supporFragmentManager: FragmentManager
+) : RecyclerView.Adapter<AdapterMinis.MyHolder>() {
 
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     private var usuario: Usuario? = null
 
-    inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var nombre : TextView
+    inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var nombre: TextView
         var imagen: ImageView
         var constraintLayout: ConstraintLayout
         var botonFav: Switch
@@ -38,63 +50,99 @@ class AdapterMinis(var listaMinis:List<Perfil>,var contexto:Context, var supporF
             botonFav = itemView.findViewById(R.id.recycler_item_fav)
         }
     }
-    fun addMini(mini: Perfil){
+
+    fun addMini(mini: Perfil) {
         (listaMinis as ArrayList<Perfil>).add(mini)
-        notifyItemInserted(listaMinis.size-1)
+        notifyItemInserted(listaMinis.size - 1)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_perfil, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recycler_item_perfil, parent, false)
 
         return MyHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        //TODO Favoritos
-        /*dataBase =
+        dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
         auth = Firebase.auth
 
-
-        dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        for (i in snapshot.children) {
-                            usuario = (i.getValue(Usuario::class.java) as Usuario)
-                        }
-                        //TODO Revisar porque no puedo sacar el valor
-                        //TODO usuario fuera de la sentencia de la bdd
-                        usuario!!.favoritos!!.forEach {
-
-
-
-                        }
-                    }
-                }
-                override fun onCancelled(error: DatabaseError) {
-                }
-            })*/
-
-
-        //NO TOCAR
         val mini = listaMinis[position]
         holder.nombre.text = mini.nombrePerfil
         Glide.with(contexto).load(mini.imagen).into(holder.imagen)
         holder.constraintLayout.setOnClickListener {
 
             val dialogo = DialogoPerfil.newInstance(mini)
-            dialogo.show(supporFragmentManager,"")
-
+            dialogo.show(supporFragmentManager, "")
         }
+
+        //TODO Acabar bien la comprobación
+        dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos").orderByChild("name").addValueEventListener(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        if((i.getValue(Perfil::class.java) as Perfil)==(mini)){
+                            holder.botonFav.isChecked = true;
+                        }
+                    }
+                }else{
+                    //ERROR EN SNAPSHOT
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+
+
+        //TODO FAVORITOS
+        holder.botonFav.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { boton, isChecked ->
+            if (isChecked) {
+                //TODO Hacer algo si es true
+                dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos")
+                    .child(mini.nombrePerfil.toString()).setValue(mini)
+
+                /*dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos")
+                    .orderByChild("name").addValueEventListener(object :
+                        ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.exists()) {
+                                for (i in snapshot.children) {
+
+                                }
+                            } else {
+                                Snackbar.make(
+                                    boton, "No tienes favoritos agregados",
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Snackbar.make(
+                                boton, "Ha ocurrido un error en la base de datos",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
+
+                    })*/
+            } else {
+                //TODO Hacer algo si es false
+                dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos")
+                    .child(mini.nombrePerfil.toString()).setValue(null)
+
+            }
+        })
     }
 
     override fun getItemCount(): Int {
         return listaMinis.size
     }
 
-    fun filtrar(listaFiltrada:ArrayList<Perfil>){
+    fun filtrar(listaFiltrada: ArrayList<Perfil>) {
         this.listaMinis = listaFiltrada
         notifyDataSetChanged()
     }

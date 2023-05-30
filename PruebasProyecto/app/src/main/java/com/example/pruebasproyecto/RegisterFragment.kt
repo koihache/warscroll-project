@@ -110,7 +110,7 @@ class RegisterFragment : Fragment() {
 
 
                                     var usuarioNuevo: Usuario = Usuario(auth.uid,binding.editRegisterCorreo.text.toString(),
-                                        binding.editRegisterUsuario.text.toString(), ArrayList<Perfil>())
+                                        binding.editRegisterUsuario.text.toString(), HashMap())
                                     database.reference.child("usuarios").child(usuarioNuevo.idUsuario!!).setValue(usuarioNuevo)
 
                                     //Nos dirige al Login

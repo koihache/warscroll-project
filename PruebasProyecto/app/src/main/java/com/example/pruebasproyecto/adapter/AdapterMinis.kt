@@ -22,8 +22,8 @@ class AdapterMinis(var listaMinis:List<Perfil>,var contexto:Context) : RecyclerV
             imagen = itemView.findViewById(R.id.recycler_item_imagen)
         }
     }
-    fun addMini(minis: Perfil){
-        (listaMinis as ArrayList<Perfil>).add(minis)
+    fun addMini(mini: Perfil){
+        (listaMinis as ArrayList<Perfil>).add(mini)
         notifyItemInserted(listaMinis.size-1)
     }
 

@@ -1,19 +1,15 @@
 package com.example.pruebasproyecto
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputContentInfo
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.example.pruebasproyecto.databinding.FragmentInicioBinding
 import com.example.pruebasproyecto.model.Usuario
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -30,6 +26,7 @@ class InicioFragment : Fragment() {
     private var nombre: String ? = null
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
+    private lateinit var lista:ArrayList<Usuario>
 
     private lateinit var listener: OnSaberMasListener
 
@@ -64,6 +61,8 @@ class InicioFragment : Fragment() {
 
         listener = context as OnSaberMasListener
 
+        lista = ArrayList()
+
         //TODO Comprobar
         dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
@@ -79,12 +78,13 @@ class InicioFragment : Fragment() {
                         }
                         //TODO Revisar porque no puedo sacar el valor
                         //TODO usuario fuera de la sentencia de la bdd
-                        binding.textInicioNombreUsuario.text = usuario!!.usuario;
+                        //binding.textInicioNombreUsuario.text = usuario!!.usuario;
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
                 }
         })
+
 
     }
 
@@ -92,7 +92,11 @@ class InicioFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //TODO Revision de lo bdd
-        //binding.textInicioNombreUsuario.text = usuario!!.usuario
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            binding.textInicioNombreUsuario.text = usuario!!.usuario;
+
+        }, 570)
 
         binding.botonInicioSabermasWarcry.setOnClickListener {
             listener.onSaberMasSelected(1)
@@ -106,4 +110,5 @@ class InicioFragment : Fragment() {
     interface OnSaberMasListener{
         fun onSaberMasSelected(opcion: Int)
     }
+
 }

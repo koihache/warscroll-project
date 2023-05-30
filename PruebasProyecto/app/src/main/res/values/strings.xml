@@ -60,6 +60,12 @@
     <string name="inicio_carta_conoce">Conoce</string>
 
 
+    <!-- Strings para el item recycler favoritos -->
+    <string name="item_favoritos_numero">Cantidad: </string>
+    <string name="item_favoritos_especie">Especie: </string>
+    <string name="item_favoritos_universo">Universo: </string>
+
+
     <!-- Strings para el fragment Warcry -->
     <string name="que_es_warcry">¿Qué es Warcry?</string>
     <string name="resumen_warcry">Warcry es un juego de escaramuzas para dos o más jugadores ambientado en Warhammer Age of Sigmar.

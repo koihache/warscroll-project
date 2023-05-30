@@ -10,7 +10,7 @@
     tools:context=".MinisFragment">
 
     <EditText
-        android:id="@+id/recycler_filtrar"
+        android:id="@+id/minis_filtrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,5 +33,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_filtrar" />
+        app:layout_constraintTop_toBottomOf="@+id/minis_filtrar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

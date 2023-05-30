@@ -30,7 +30,6 @@ class InicioFragment : Fragment() {
 
     private lateinit var listener: OnSaberMasListener
 
-
     /*companion object{
         fun newInstance(usuario: Usuario, nombre: String): InicioFragment {
             val args = Bundle()
@@ -78,12 +77,14 @@ class InicioFragment : Fragment() {
                         }
                         //TODO Revisar porque no puedo sacar el valor
                         //TODO usuario fuera de la sentencia de la bdd
-                        //binding.textInicioNombreUsuario.text = usuario!!.usuario;
+                        binding.textInicioNombreUsuario.text = usuario!!.usuario;
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
                 }
         })
+
+
 
 
     }
@@ -92,11 +93,12 @@ class InicioFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //TODO Revision de lo bdd
-        Handler(Looper.getMainLooper()).postDelayed({
+        //TODO Cambiar este método temporal
+        /*Handler(Looper.getMainLooper()).postDelayed({
 
             binding.textInicioNombreUsuario.text = usuario!!.usuario;
 
-        }, 570)
+        }, 600)*/
 
         binding.botonInicioSabermasWarcry.setOnClickListener {
             listener.onSaberMasSelected(1)
@@ -107,8 +109,16 @@ class InicioFragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+
+    }
+
     interface OnSaberMasListener{
         fun onSaberMasSelected(opcion: Int)
     }
+
+
+
 
 }

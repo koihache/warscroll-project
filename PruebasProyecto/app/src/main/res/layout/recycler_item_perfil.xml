@@ -27,20 +27,20 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/recycler_item_imagen"
+                android:id="@+id/item_imagen"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/recycler_item_text"
+                android:id="@+id/label_nombre"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/recycler_item_imagen"
+                app:layout_constraintStart_toEndOf="@+id/item_imagen"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

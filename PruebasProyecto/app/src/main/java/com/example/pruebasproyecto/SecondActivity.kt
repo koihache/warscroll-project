@@ -74,7 +74,7 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
                 fragmentTransaction.addToBackStack("f2_minis")
             }
             3 -> {
-                fragmentTransaction.replace(binding.frameLayoutFragments.id, InicioFragment())
+                fragmentTransaction.replace(binding.frameLayoutFragments.id, FavoritosFragment())
                 fragmentTransaction.addToBackStack("f3_fav")
             }
             4 -> {

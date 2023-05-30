@@ -10,18 +10,12 @@ class DialogoBorrarDatos: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         var builder = AlertDialog.Builder(requireContext());
-        builder.setTitle("Confirmación de salida")
-            .setMessage("¿Estas seguro de borrar todos os datos?")
+        builder.setTitle("Borrar datos")
+            .setMessage("¿Estas seguro de borrar todos los datos?")
             .setPositiveButton("Si") { dialogInterface, posicion ->
-                Log.v(
-                    "dialogos",
-                    "Pulsado si "+posicion.toString()
-                )
+
             }.setNegativeButton("No"){ dialogInterface, posicion ->
-                Log.v(
-                    "dialogos",
-                    "Pulsado no "+posicion.toString()
-                )
+
             }
         return builder.create()
     }

@@ -1,14 +1,17 @@
 package com.example.pruebasproyecto
 
+import android.R
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pruebasproyecto.adapter.AdapterMinis
 import com.example.pruebasproyecto.databinding.FragmentMinisBinding
 import com.example.pruebasproyecto.model.Perfil
@@ -16,13 +19,15 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlin.collections.ArrayList
+
 
 class MinisFragment : Fragment() {
 
     private var _binding: FragmentMinisBinding? = null
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var adapterMinis: AdapterMinis
+
+
 
     var listaMinis = arrayListOf<Perfil>()
 
@@ -37,7 +42,7 @@ class MinisFragment : Fragment() {
 
         _binding = FragmentMinisBinding.inflate(inflater, container, false)
 
-        adapterMinis = AdapterMinis(ArrayList<Perfil>(),requireContext())
+        adapterMinis = AdapterMinis(ArrayList<Perfil>(),requireContext(), requireActivity().supportFragmentManager)
 
         binding.recyclerMinis.adapter = adapterMinis
 
@@ -60,7 +65,7 @@ class MinisFragment : Fragment() {
 
     private fun filtrarLista() {
         binding.recyclerMinis.layoutManager = LinearLayoutManager(requireContext())
-        adapterMinis = AdapterMinis(listaMinis, requireContext())
+        adapterMinis = AdapterMinis(listaMinis, requireContext(), requireActivity().supportFragmentManager)
         binding.recyclerMinis.adapter = adapterMinis
     }
     private fun filtrar(text:String){

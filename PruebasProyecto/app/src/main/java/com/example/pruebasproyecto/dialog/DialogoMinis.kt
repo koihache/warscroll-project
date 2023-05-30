@@ -11,15 +11,27 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.example.pruebasproyecto.R
+import com.example.pruebasproyecto.model.Perfil
 
 class DialogoMinis: DialogFragment() {
 
     private lateinit var vista: View
-    private lateinit var imagen: ImageView
-    private lateinit var titulo: TextView
-    private lateinit var descripcion: TextView
+    private lateinit var topImagen: ImageView;
+    private lateinit var labelTitulo: TextView;
+    private lateinit var labelDescripcion: TextView;
 
-    private lateinit var listener: OnMinisListener
+    private lateinit var perfilRecibido: Perfil
+
+    companion object{
+        fun newInstance(perfil: Perfil): DialogoMinis {
+            val args = Bundle()
+            args.putSerializable("perfil",perfil) as Perfil
+            val fragment = DialogoMinis()
+            fragment.arguments
+            return fragment
+
+        }
+    }
 
 
     override fun onAttach(context: Context) {
@@ -29,34 +41,24 @@ class DialogoMinis: DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        var  builder = AlertDialog.Builder(requireContext())
+        var builder = androidx.appcompat.app.AlertDialog.Builder(requireContext())
         builder.setView(vista)
-
+        perfilRecibido = this.arguments?.get("perfil") as Perfil
         return builder.create()
     }
 
-    override fun onResume() {
-        super.onResume()
-        acciones()
-
-    }
-
-    private fun acciones() {
-        dismiss()
-    }
-
-    private fun instancias() {
-        imagen = vista.findViewById(R.id.dialogo_minis_imagen)
-        titulo = vista.findViewById(R.id.dialogo_minis_imagen)
-        descripcion = vista.findViewById(R.id.dialogo_minis_imagen)
-    }
 
     override fun onStart() {
         super.onStart()
-        instancias()
+        topImagen = vista.findViewById(R.id.dialogo_minis_imagen);
+        labelTitulo = vista.findViewById(R.id.dialogo_minis_titulo);
+        labelDescripcion = vista.findViewById(R.id.dialogo_minis_descripcion);
+
+        Glide.with(requireContext()).load(perfilRecibido.imagen).into(topImagen)
+        labelTitulo.setText(perfilRecibido.nombrePerfil)
+        labelDescripcion.setText(perfilRecibido.nMinis.toString())
+
+
     }
 
-    interface OnMinisListener{
-        fun onMinisDataSelected(imagen:String, titulo: String,descripcion: String)
-    }
 }

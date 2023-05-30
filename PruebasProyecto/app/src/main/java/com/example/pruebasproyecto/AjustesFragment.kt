@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.pruebasproyecto.databinding.FragmentAjustesBinding
+import com.example.pruebasproyecto.dialog.DialogoBorrarDatos
 import com.example.pruebasproyecto.dialog.DialogoCerrarSesion
-import com.example.pruebasproyecto.dialog.DialogoPerfil
+import com.example.pruebasproyecto.dialog.DialogoUsuario
 import com.example.pruebasproyecto.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -21,8 +22,6 @@ class AjustesFragment: Fragment(){
 
     private var _binding: FragmentAjustesBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private var usuario: Usuario? = null
     private lateinit var dataBase: FirebaseDatabase
@@ -58,7 +57,7 @@ class AjustesFragment: Fragment(){
                             }
                             //TODO Revisar porque no puedo sacar el valor
                             //TODO usuario fuera de la sentencia de la bdd
-                            val dialogo = DialogoPerfil.newInstance(usuario?.correo!!, usuario?.usuario!!)
+                            val dialogo = DialogoUsuario.newInstance(usuario?.correo!!, usuario?.usuario!!)
                             dialogo.show(requireActivity().supportFragmentManager,"")
                         }
                     }
@@ -72,6 +71,9 @@ class AjustesFragment: Fragment(){
 
         binding.botonAjustesCerrarsesion.setOnClickListener {
             DialogoCerrarSesion().show(requireActivity().supportFragmentManager,"")
+        }
+        binding.botonAjustesDatos.setOnClickListener {
+            DialogoBorrarDatos().show(requireActivity().supportFragmentManager,"")
         }
 
     }

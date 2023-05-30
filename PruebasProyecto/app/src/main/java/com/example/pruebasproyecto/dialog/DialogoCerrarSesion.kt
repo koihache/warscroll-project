@@ -13,15 +13,9 @@ class DialogoCerrarSesion: DialogFragment() {
         builder.setTitle("Confirmación de salida")
             .setMessage("¿Seguro que quieres cerrar la sesión?")
             .setPositiveButton("Aceptar") { dialogInterface, posicion ->
-                Log.v(
-                    "dialogos",
-                    "Pulsado aceptar "+posicion.toString()
-                )
+
             }.setNegativeButton("Cancelar"){ dialogInterface, posicion ->
-                Log.v(
-                    "dialogos",
-                    "Pulsado cancelar "+posicion.toString()
-                )
+
             }
         return builder.create()
     }

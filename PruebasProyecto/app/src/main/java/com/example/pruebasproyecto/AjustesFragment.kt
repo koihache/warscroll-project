@@ -1,26 +1,32 @@
 package com.example.pruebasproyecto
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.example.pruebasproyecto.databinding.FragmentAjustesBinding
-import com.example.pruebasproyecto.databinding.FragmentInicioBinding
+import com.example.pruebasproyecto.dialog.DialogoCerrarSesion
 import com.example.pruebasproyecto.dialog.DialogoPerfil
-import com.google.android.material.snackbar.Snackbar
+import com.example.pruebasproyecto.model.Usuario
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
-class AjustesFragment: Fragment(),View.OnClickListener{
+class AjustesFragment: Fragment(){
 
     private var _binding: FragmentAjustesBinding? = null
-
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private var usuario: Usuario? = null
+    private lateinit var dataBase: FirebaseDatabase
+    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreateView(
@@ -28,27 +34,45 @@ class AjustesFragment: Fragment(),View.OnClickListener{
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAjustesBinding.inflate(inflater, container, false)
-        acciones()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-    }
-    private fun acciones() {
-        binding.botonAjustesPerfil.setOnClickListener(this)
-    }
-    override fun onClick(v: View?) {
         binding.botonAjustesPerfil.setOnClickListener {
-            Snackbar.make(
-                binding.botonAjustesPerfil,
-                "sedrhsdrhgyse",
-                Snackbar.LENGTH_SHORT
-            ).show()
-            DialogoPerfil().show(requireFragmentManager(),"")
+
+
+            dataBase =
+                FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
+
+            auth = Firebase.auth
+
+            dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            for (i in snapshot.children) {
+                                usuario = (i.getValue(Usuario::class.java) as Usuario)
+                            }
+                            //TODO Revisar porque no puedo sacar el valor
+                            //TODO usuario fuera de la sentencia de la bdd
+                            val dialogo = DialogoPerfil.newInstance(usuario?.correo!!, usuario?.usuario!!)
+                            dialogo.show(requireActivity().supportFragmentManager,"")
+                        }
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+
+
 
         }
+
+        binding.botonAjustesCerrarsesion.setOnClickListener {
+            DialogoCerrarSesion().show(requireActivity().supportFragmentManager,"")
+        }
+
     }
 }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.pruebasproyecto.databinding.FragmentRegisterBinding
+import com.example.pruebasproyecto.model.Perfil
 import com.example.pruebasproyecto.model.Usuario
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -107,9 +108,9 @@ class RegisterFragment : Fragment() {
                                     bundle.putString("correo", binding.editRegisterCorreo.text.toString())
                                     bundle.putString("password", binding.editRegisterPassword.text.toString())
 
-                                    //TODO Añadir al constructor la lista de favoritos
+
                                     var usuarioNuevo: Usuario = Usuario(auth.uid,binding.editRegisterCorreo.text.toString(),
-                                        binding.editRegisterUsuario.text.toString())
+                                        binding.editRegisterUsuario.text.toString(), ArrayList<Perfil>())
                                     database.reference.child("usuarios").child(usuarioNuevo.idUsuario!!).setValue(usuarioNuevo)
 
                                     //Nos dirige al Login

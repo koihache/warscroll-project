@@ -2,8 +2,6 @@ package com.example.pruebasproyecto
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,35 +21,27 @@ class InicioFragment : Fragment() {
     private var _binding: FragmentInicioBinding? = null
     private val binding get() = _binding!!
     private var usuario: Usuario? = null
-    private var nombre: String ? = null
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
-    private lateinit var lista:ArrayList<Usuario>
-
     private lateinit var listener: OnSaberMasListener
 
     /*companion object{
-        fun newInstance(usuario: Usuario, nombre: String): InicioFragment {
+        fun newInstance(usuario: Usuario): InicioFragment {
             val args = Bundle()
-            val fragment = InicioFragment()
             args.putSerializable("usuario", usuario)
-            args.putString("nombre", nombre)
+            val fragment = InicioFragment()
             fragment.arguments = args
             return fragment
         }
     }*/
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentInicioBinding.inflate(inflater, container, false)
+        //usuario = arguments?.getSerializable("usuario") as Usuario
         return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     //@RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -59,8 +49,6 @@ class InicioFragment : Fragment() {
         super.onAttach(context)
 
         listener = context as OnSaberMasListener
-
-        lista = ArrayList()
 
         //TODO Comprobar
         dataBase =
@@ -83,10 +71,6 @@ class InicioFragment : Fragment() {
                 override fun onCancelled(error: DatabaseError) {
                 }
         })
-
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -109,16 +93,7 @@ class InicioFragment : Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-    }
-
     interface OnSaberMasListener{
         fun onSaberMasSelected(opcion: Int)
     }
-
-
-
-
 }

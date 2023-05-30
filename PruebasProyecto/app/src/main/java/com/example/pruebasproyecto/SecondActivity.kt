@@ -31,13 +31,13 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dataBase =
+        /*dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
         auth = Firebase.auth
 
         //TODO Hacer una lista de usuarios y coger la primera y unica posicion
-        /*dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
+        dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
@@ -45,12 +45,9 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
                             //TODO Revisar con BORJA
                             // listaUsuarios.add((i.getValue(Usuario::class.java) as Usuario))
 
-                            val usuario = (i.getValue(Usuario::class.java) as Usuario)
+                            usuario = (i.getValue(Usuario::class.java) as Usuario)
 
-//                          Log.v("usuario", i.toString())
-//                          Log.v("usuario", usuario.usuario!!)
-
-                            //InicioFragment.newInstance(usuario, "asdfghjk")
+                            InicioFragment.newInstance(usuario)
                         }
                     }
                 }
@@ -61,6 +58,7 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
             })*/
 
     }
+
     override fun onCambioSelected(opcion: Int) {
         var fragmentTransaction = supportFragmentManager.beginTransaction()
 
@@ -102,4 +100,5 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
         fragmentTransaction.commit();
 
     }
+
 }

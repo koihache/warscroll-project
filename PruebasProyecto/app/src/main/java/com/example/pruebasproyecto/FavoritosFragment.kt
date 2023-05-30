@@ -99,7 +99,7 @@ class FavoritosFragment : Fragment() {
                         adapterFavoritos.addMini(i.getValue(Perfil::class.java) as Perfil)
                     }
                 }else{
-                    Snackbar.make(binding.favoritosFiltrar,"No tienes favoritos agregados",Snackbar.LENGTH_INDEFINITE).show()
+                    Snackbar.make(binding.favoritosFiltrar,"No tienes favoritos agregados",Snackbar.LENGTH_SHORT).show()
                 }
             }
 

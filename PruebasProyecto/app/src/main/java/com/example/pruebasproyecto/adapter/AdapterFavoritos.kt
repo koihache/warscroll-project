@@ -17,8 +17,6 @@ import com.google.firebase.database.FirebaseDatabase
 
 class AdapterFavoritos(var listaMinis:List<Perfil>, var contexto: Context, var supporFragmentManager: FragmentManager) : RecyclerView.Adapter<AdapterFavoritos.MyHolder>() {
 
-    private lateinit var dataBase: FirebaseDatabase
-    private lateinit var auth: FirebaseAuth
     private var usuario: Usuario? = null
 
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -30,11 +28,11 @@ class AdapterFavoritos(var listaMinis:List<Perfil>, var contexto: Context, var s
 
 
         init {
-            nombre = itemView.findViewById(R.id.label_nombre)
+            nombre = itemView.findViewById(R.id.text_nombre)
             imagen = itemView.findViewById(R.id.item_imagen)
-            universo = itemView.findViewById(R.id.label_universo)
-            especie = itemView.findViewById(R.id.label_especie)
-            cantidad = itemView.findViewById(R.id.label_cantidad)
+            universo = itemView.findViewById(R.id.text_universo)
+            especie = itemView.findViewById(R.id.text_especie)
+            cantidad = itemView.findViewById(R.id.text_cantidad)
 
         }
     }

@@ -32,7 +32,7 @@ class DialogoUsuario : DialogFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        vista = LayoutInflater.from(context).inflate(R.layout.dialogo_perfil,null);
+        vista = LayoutInflater.from(context).inflate(R.layout.dialogo_usuario,null);
     }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 

@@ -60,10 +60,10 @@
     <string name="inicio_carta_conoce">Conoce</string>
 
 
-    <!-- Strings para el item recycler favoritos -->
-    <string name="item_favoritos_numero">Cantidad: </string>
-    <string name="item_favoritos_especie">Especie: </string>
-    <string name="item_favoritos_universo">Universo: </string>
+    <!-- Strings para labels -->
+    <string name="item_cantidad">Cantidad: </string>
+    <string name="item_especie">Especie: </string>
+    <string name="item_universo">Universo: </string>
 
 
     <!-- Strings para el fragment Warcry -->

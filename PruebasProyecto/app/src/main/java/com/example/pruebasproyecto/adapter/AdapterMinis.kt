@@ -11,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pruebasproyecto.dialog.DialogoMinis
+import com.example.pruebasproyecto.dialog.DialogoPerfil
 import com.example.pruebasproyecto.R
 import com.example.pruebasproyecto.model.Perfil
 import com.example.pruebasproyecto.model.Usuario
@@ -32,7 +32,7 @@ class AdapterMinis(var listaMinis:List<Perfil>,var contexto:Context, var supporF
 
 
         init {
-            nombre = itemView.findViewById(R.id.label_nombre)
+            nombre = itemView.findViewById(R.id.text_nombre)
             imagen = itemView.findViewById(R.id.item_imagen)
             constraintLayout = itemView.findViewById(R.id.recycler_item_constraint)
             botonFav = itemView.findViewById(R.id.recycler_item_fav)
@@ -84,7 +84,7 @@ class AdapterMinis(var listaMinis:List<Perfil>,var contexto:Context, var supporF
         Glide.with(contexto).load(mini.imagen).into(holder.imagen)
         holder.constraintLayout.setOnClickListener {
 
-            val dialogo = DialogoMinis.newInstance(mini.imagen.toString())
+            val dialogo = DialogoPerfil.newInstance(mini)
             dialogo.show(supporFragmentManager,"")
 
         }

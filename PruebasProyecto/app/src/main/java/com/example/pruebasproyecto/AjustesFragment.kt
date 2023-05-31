@@ -70,10 +70,6 @@ class AjustesFragment: Fragment(){
                 })
         }
 
-        binding.botonAjustesTerminos.setOnClickListener {
-            DialogoTerminos().show(requireActivity().supportFragmentManager,"")
-        }
-
         binding.botonAjustesDatos.setOnClickListener {
             DialogoBorrarDatos().show(requireActivity().supportFragmentManager,"")
         }

@@ -75,11 +75,31 @@
         \n
         Los tres estilos de juego característicos de Age of Sigmar están disponibles también en Warcry: el Matched Play (o “Juego combinado”) es el más competitivo y equilibrado, el Narrative pone a tu banda de guerra en el centro de la acción creando una historia en torno a sus hazañas, y el Open Play es el más flexible permitiendo también partidas multijugador.\n
         \n
-        Cada batalla se divide en dos fases: la fase de reunión y la fase de combate.\n
+        Para jugar necesitarás también un área adecuada cubierta por un tablero y algo de escenografía. Cualquier cosa puede servir, pero Games Workshop vende diferentes sets con tableros, fichas, escenografía y reglas adecuadas para jugar en ese entorno. Y por supuesto, necesitas dados y una regla (simplemente algo con lo que medir).\n
         \n
-        En la fase de reunión, los jugadores se turnan para colocar las cartas de unidad o equipo sobre la mesa. Cada una de estas cartas tiene un coste en puntos de oro. En la primera batalla, ambos jugadores pueden reunir unidades por hasta 20 de oro, en la segunda, hasta 25, y en la tercera, hasta 30\n
+        Ahora comienza la fase de combate.\n
         \n
-        Cuando ambos jugadores terminan de reunir unidades, comienza la fase de combate. Los oponentes se turnan para dar órdenes (una orden puede ser un ataque, un movimiento o jugar una habilidad especial de la mano). Después de que ambos pasen sucesivamente, la batalla termina. Gana el jugador con más puntos de victoria (sumando la fuerza de las unidades supervivientes)\n</string>
+        El resto de la partida de Warcry se desarrolla como un “yo voy, tú vas”, donde los jugadores se alternan eligiendo un luchador a la vez. Cada luchador tiene 4 acciones disponibles: Mover, Atacar, Desengancharse y Esperar.\n
+        \n
+        Mover se utiliza para realizar movimientos, hay reglas especiales para escalar terreno o moverse a través de elementos como puertas o arcos, pero en pocas palabras, un luchador puede moverse X centímetros en cada acción, donde X es el valor de su característica de movimiento (más o menos cualquier modificador aplicado).\n
+        \n
+        Desengancharse es una acción que se puede realizar sólo cuando el luchador está a 3 centímetros de uno o más enemigos (las acciones de movimiento en ese caso no se pueden realizar). Ese combatiente intenta entonces alejarse 9 centímetros permaneciendo a más de 3 centímetros de cualquier combatiente enemigo. Si eso no es posible, entonces esta acción no puede ser utilizada.\n
+        \n
+        Esperar puede utilizarse como primera acción para saltarse un turno y volver a activar al mismo luchador en un momento posterior para esta última acción o puede utilizarse como segunda acción simplemente para terminar.\n
+        \n
+        El ataque es la acción que se utiliza para hacer daño a los enemigos. Cualquier modelo tiene uno o más perfiles de arma, éstos contienen el Alcance (a qué distancia puedes golpear a un enemigo), el número de Ataques, la Fuerza y el Daño (en un golpe normal y en un golpe crítico).\n
+        \n
+        Al atacar a un enemigo verifica que es visible y está dentro del alcance de esa arma, tira tantos dados como el valor de Ataque, luego compara el valor de Fuerza de esa arma contra el valor de Dureza del modelo enemigo.\n
+        \n
+        Si los dos valores son iguales, cada 4+ (es decir, un dado con un valor de 4 o más) resultará en un impacto, si la Fuerza es mayor entonces impactará con un 3+, mientras que si la Fuerza es menor impactará con un 5+. Un 6 es siempre un golpe crítico.\n
+        \n
+        Suma todo el daño dependiendo de si ha sido un golpe normal o crítico y eso es el número de heridas que hay que aplicar al modelo enemigo. Si el resultado lleva al adversario a un valor de heridas de 0 o menos, entonces se retira del juego.\n
+        \n
+        Cuando ambos jugadores terminan de reunir unidades, comienza la fase de combate. Los oponentes se turnan para dar órdenes (una orden puede ser un ataque, un movimiento o jugar una habilidad especial de la mano). Después de que ambos pasen sucesivamente, la batalla termina. Gana el jugador con más puntos de victoria (sumando la fuerza de las unidades supervivientes)\n
+        \n
+        Con estas pequeñas pautas a seguir podremos jugar una partida de Warcry, pero, en caso de querer profundizar acerca de las reglas generales del juego se pueden adquirir libros explicativos.
+        
+    </string>
 
     <!-- Strings para el fragment Killteam -->
     <string name="que_es_killteam">¿Qué es Killteam?</string>

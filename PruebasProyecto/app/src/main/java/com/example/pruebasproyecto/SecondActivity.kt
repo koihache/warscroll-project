@@ -102,5 +102,9 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
         fragmentTransaction.commit();
 
     }
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+
+    }
 
 }

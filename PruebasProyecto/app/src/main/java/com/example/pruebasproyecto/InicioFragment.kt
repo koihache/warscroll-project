@@ -88,4 +88,5 @@ class InicioFragment : Fragment() {
     interface OnSaberMasListener{
         fun onSaberMasSelected(opcion: Int)
     }
+
 }

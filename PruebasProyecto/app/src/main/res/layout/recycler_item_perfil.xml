@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text=""
+                android:fontFamily="@font/kanit_regular"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/item_imagen"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SaberMasWarcryFragment"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@color/color5">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
         android:textAlignment="inherit"
         android:fontFamily="@font/kanit_regular"
         android:text="@string/resumen_warcry"
-        android:textColor="@color/color2"
+        android:textColor="@color/color1"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:layout_editor_absoluteX="20dp" />

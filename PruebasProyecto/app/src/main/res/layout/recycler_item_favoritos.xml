@@ -27,10 +27,13 @@
 
         <TextView
             android:id="@+id/text_nombre"
-            android:layout_width="170dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
+            android:textAlignment="center"
             android:text=""
+            android:textSize="16sp"
+            android:fontFamily="@font/kanit_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_imagen"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -39,8 +42,10 @@
             android:id="@+id/label_especie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:text="@string/item_especie"
+            android:textStyle="bold"
+            android:fontFamily="@font/kanit_regular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_imagen"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="-"
+            android:fontFamily="@font/kanit_regular"
             app:layout_constraintBottom_toBottomOf="@+id/label_especie"
             app:layout_constraintStart_toEndOf="@+id/label_especie"
             app:layout_constraintTop_toTopOf="@+id/label_especie" />
@@ -61,6 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:text="@string/item_universo"
+            android:textStyle="bold"
+            android:fontFamily="@font/kanit_regular"
             app:layout_constraintEnd_toEndOf="@+id/label_especie"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/label_especie"
@@ -72,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="-"
+            android:fontFamily="@font/kanit_regular"
             app:layout_constraintBottom_toBottomOf="@+id/label_universo"
             app:layout_constraintStart_toEndOf="@+id/label_universo"
             app:layout_constraintTop_toTopOf="@+id/label_universo" />
@@ -80,10 +89,12 @@
             android:id="@+id/label_cantidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="40dp"
             android:text="@string/item_cantidad"
+            android:fontFamily="@font/kanit_regular"
             app:layout_constraintBottom_toBottomOf="@+id/text_especie"
-            app:layout_constraintStart_toEndOf="@+id/text_especie"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_especie" />
 
         <TextView
@@ -92,6 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="0"
+            android:fontFamily="@font/kanit_regular"
             app:layout_constraintBottom_toBottomOf="@+id/label_cantidad"
             app:layout_constraintStart_toEndOf="@+id/label_cantidad"
             app:layout_constraintTop_toTopOf="@+id/label_cantidad" />

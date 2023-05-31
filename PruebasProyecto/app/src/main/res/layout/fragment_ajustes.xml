@@ -24,29 +24,17 @@
         android:textColor="@color/color1"/>
 
     <Button
-        android:id="@+id/boton_ajustes_terminos"
-        android:textSize="@dimen/tamanio_texto_boton_ajustes"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/tamanio_boton_ajustes"
-        android:fontFamily="@font/kanit_regular"
-        android:text="@string/termino_boton_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_perfil"
-        android:backgroundTint="@color/color5"
-        android:textColor="@color/color1"/>
-    <Button
         android:id="@+id/boton_ajustes_datos"
-        android:textSize="@dimen/tamanio_texto_boton_ajustes"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tamanio_boton_ajustes"
+        android:backgroundTint="@color/color5"
         android:fontFamily="@font/kanit_regular"
         android:text="@string/borrardatos_boton_label"
+        android:textColor="@color/color1"
+        android:textSize="@dimen/tamanio_texto_boton_ajustes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_terminos"
-        android:backgroundTint="@color/color5"
-        android:textColor="@color/color1"/>
+        app:layout_constraintTop_toBottomOf="@+id/boton_ajustes_perfil" />
     <Button
         android:id="@+id/boton_ajustes_pass"
         android:textSize="@dimen/tamanio_texto_boton_ajustes"

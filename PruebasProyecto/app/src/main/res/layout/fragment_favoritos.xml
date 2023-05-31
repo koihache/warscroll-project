@@ -41,7 +41,7 @@
             android:singleLine="true"
             android:text=""
             android:hint="Introduce para buscar"
-            android:textAlignment="textEnd"
+            android:textAlignment="textStart"
             android:textColor="@color/color1" />
     </androidx.cardview.widget.CardView>
 

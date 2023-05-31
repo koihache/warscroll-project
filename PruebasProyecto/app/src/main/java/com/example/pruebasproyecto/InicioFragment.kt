@@ -76,14 +76,6 @@ class InicioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO Revision de lo bdd
-        //TODO Cambiar este método temporal
-        /*Handler(Looper.getMainLooper()).postDelayed({
-
-            binding.textInicioNombreUsuario.text = usuario!!.usuario;
-
-        }, 600)*/
-
         binding.botonInicioSabermasWarcry.setOnClickListener {
             listener.onSaberMasSelected(1)
         }
@@ -96,4 +88,5 @@ class InicioFragment : Fragment() {
     interface OnSaberMasListener{
         fun onSaberMasSelected(opcion: Int)
     }
+
 }

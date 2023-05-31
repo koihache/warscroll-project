@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.example.pruebasproyecto.R
@@ -13,8 +13,8 @@ import com.example.pruebasproyecto.R
 class DialogoUsuario : DialogFragment() {
 
     lateinit var vista: View;
-    private lateinit var labelCorreo: EditText;
-    private lateinit var labelUsuario: EditText;
+    private lateinit var labelCorreo: TextView;
+    private lateinit var labelUsuario: TextView;
 
     private lateinit var correo: String
     private lateinit var usuario: String

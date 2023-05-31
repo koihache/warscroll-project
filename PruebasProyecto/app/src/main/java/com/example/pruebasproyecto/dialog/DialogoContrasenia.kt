@@ -11,48 +11,109 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.pruebasproyecto.R
+import com.example.pruebasproyecto.model.Usuario
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
-class DialogoContrasenia :DialogFragment(){
+class DialogoContrasenia : DialogFragment() {
 
+    private lateinit var auth: FirebaseAuth
+    private lateinit var dataBase: FirebaseDatabase
 
-    private lateinit var correo: String
-    private lateinit var passw: String
+    private lateinit var usuario: Usuario
 
-
-    companion object{
-        fun newInstance(correo:String,pass : String): DialogoContrasenia {
-            val args = Bundle()
-            args.putString("correo", correo)
-            args.putString("pass", pass)
-            val fragment = DialogoContrasenia()
-            fragment.arguments = args
-            return fragment
-        }
-    }
+    private lateinit var context:Context;
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         var builder = AlertDialog.Builder(requireContext());
-        correo = this.arguments?.get("correo").toString()
-        passw = this.arguments?.get("pass").toString()
+
+        context = requireContext()
+
+        auth = Firebase.auth
+        dataBase =
+            FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
+
         builder.setTitle("Cambiar de Contraseña")
-            .setMessage("¿Desea cambiar la contraseña por una bnueva?")
+            .setMessage("¿Desea cambiar la contraseña por una nueva?")
             .setPositiveButton("Aceptar") { dialogInterface, posicion ->
-                FirebaseAuth.getInstance().sendPasswordResetEmail(correo).addOnCompleteListener {task ->
-                    if (task.isSuccessful){
-                        Snackbar.make(requireView(),"Email enviado correctamente",Snackbar.LENGTH_SHORT).show()
-                    } else{
-                        Snackbar.make(requireView(),"Email no enviado",Snackbar.LENGTH_SHORT).show()
-                    }
-                }
 
+                dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
+                    .addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.exists()) {
+                                for (i in snapshot.children) {
+                                    usuario = (i.getValue(Usuario::class.java) as Usuario)
+                                }
+                                auth.sendPasswordResetEmail(usuario.correo.toString())
+                                    .addOnSuccessListener {
+                                        Toast.makeText(
+                                            context,
+                                            "Correo enviado correctamente",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Toast.makeText(
+                                            context,
+                                            "Error al enviar el correo",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                            }
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                        }
+                    })
+                /*dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid).get()
+                    .addOnSuccessListener {
 
-            }.setNegativeButton("Cancelar"){ dialogInterface, posicion ->
-                Log.d(TAG, "Error auth failed")
+                        usuario = it.value as Usuario
+
+                        auth.sendPasswordResetEmail(usuario.correo.toString())
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    requireActivity().applicationContext,
+                                    "Correo enviado correctamente",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(
+                                    requireActivity().applicationContext,
+                                    "Error al enviar el correo",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
+                        /*auth.sendPasswordResetEmail(usuario.correo.toString())
+                            .addOnCompleteListener() { task ->
+                                if (task.isSuccessful) {
+                                    Toast.makeText(
+                                        requireActivity().applicationContext,
+                                        "Correo enviado correctamente",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
+                                    Toast.makeText(
+                                        requireActivity().applicationContext,
+                                        "Error al enviar el correo",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }*/
+                    }*/
+            }.setNegativeButton("Cancelar") { dialogInterface, posicion ->
+
             }
         return builder.create()
     }

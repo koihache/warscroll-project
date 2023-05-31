@@ -61,6 +61,8 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
 
     override fun onCambioSelected(opcion: Int) {
         var fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+            android.R.anim.fade_out);
 
         when (opcion) {
             1 -> {

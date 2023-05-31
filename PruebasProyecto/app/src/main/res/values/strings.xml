@@ -79,10 +79,10 @@
         \n
         En la fase de reunión, los jugadores se turnan para colocar las cartas de unidad o equipo sobre la mesa. Cada una de estas cartas tiene un coste en puntos de oro. En la primera batalla, ambos jugadores pueden reunir unidades por hasta 20 de oro, en la segunda, hasta 25, y en la tercera, hasta 30\n
         \n
-        Cuando ambos jugadores terminan de reunir unidades, comienza la fase de combate. Los oponentes se turnan para dar órdenes (una orden puede ser un ataque, un movimiento o jugar una carta especial de la mano). Después de que ambos pasen sucesivamente, la batalla termina. Gana el jugador con más puntos de victoria (sumando la fuerza de las unidades supervivientes)\n</string>
+        Cuando ambos jugadores terminan de reunir unidades, comienza la fase de combate. Los oponentes se turnan para dar órdenes (una orden puede ser un ataque, un movimiento o jugar una habilidad especial de la mano). Después de que ambos pasen sucesivamente, la batalla termina. Gana el jugador con más puntos de victoria (sumando la fuerza de las unidades supervivientes)\n</string>
+
     <!-- Strings para el fragment Killteam -->
     <string name="que_es_killteam">¿Qué es Killteam?</string>
-
     <string name="resumen_killteam"><b>Killteam</b> es un juego de escaramuzas para dos o más jugadores ambientado en Warhammer 40,000.\n
     \n
     Sus reglas básicas son las siguientes: en Kill Team, los jugadores controlan equipos de pocas miniaturas de las diferentes facciones que componen el juego principal,y se enfrentan entre sí en juegos de pequeña escala y corta duración.\n

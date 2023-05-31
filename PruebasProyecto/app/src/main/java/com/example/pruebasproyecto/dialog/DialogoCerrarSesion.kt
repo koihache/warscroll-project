@@ -33,7 +33,7 @@ class DialogoCerrarSesion: DialogFragment() {
                 startActivity(Intent(requireActivity().applicationContext, MainActivity::class.java))
 
             }.setNegativeButton("Cancelar"){ dialogInterface, posicion ->
-                Toast.makeText(requireActivity().applicationContext, "Operacion Cancelada",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity().applicationContext, "Operación cancelada",Toast.LENGTH_SHORT).show()
             }
         return builder.create()
     }

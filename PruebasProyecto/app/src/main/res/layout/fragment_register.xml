@@ -82,12 +82,25 @@
         android:id="@+id/boton_crearcuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/kanit_regular"
         android:text="@string/register_crear_cuenta"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_register_repetir" />
+
+    <Button
+        android:id="@+id/boton_volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/kanit_regular"
+        android:text="@string/register_volver_login"
+        android:textColor="@color/color1"
+        app:layout_constraintEnd_toEndOf="@+id/boton_crearcuenta"
+        app:layout_constraintStart_toStartOf="@+id/boton_crearcuenta"
+        app:layout_constraintTop_toBottomOf="@+id/boton_crearcuenta" />
 
     <TextView
         android:id="@+id/label_register_copy"

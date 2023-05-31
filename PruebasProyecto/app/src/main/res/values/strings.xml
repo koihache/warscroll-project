@@ -42,6 +42,7 @@
     <string name="register_label">Crea tu cuenta</string>
 
     <string name="register_crear_cuenta">Crear cuenta</string>
+    <string name="register_volver_login">Volver</string>
 
 
     <!-- Strings para el fragment ajustes -->

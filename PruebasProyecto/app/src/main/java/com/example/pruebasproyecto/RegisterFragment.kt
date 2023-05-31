@@ -202,6 +202,12 @@ class RegisterFragment : Fragment() {
                 }
             }*/
         }
+
+        //Te redirije al Login
+        binding.botonVolver.setOnClickListener {
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+
+        }
     }
 
     override fun onDestroyView() {

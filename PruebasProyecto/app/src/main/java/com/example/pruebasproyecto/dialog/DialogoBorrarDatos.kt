@@ -26,8 +26,8 @@ class DialogoBorrarDatos: DialogFragment() {
         var builder = AlertDialog.Builder(requireContext());
 
         builder.setTitle("Borrar datos")
-            .setMessage("¿Estas seguro de que quieres borrar todos tus datos? \n Esto eliminará todos tus perfiles favoritos")
-            .setPositiveButton("Si") { dialogInterface, posicion ->
+            .setMessage("¿Estas seguro de que quieres borrar todos tus datos? \nEsto eliminará todos tus perfiles favoritos.")
+            .setPositiveButton("Sí") { dialogInterface, posicion ->
 
                 dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos").setValue(null)
 

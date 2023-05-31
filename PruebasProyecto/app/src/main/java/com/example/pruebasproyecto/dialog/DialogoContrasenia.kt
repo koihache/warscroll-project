@@ -74,46 +74,8 @@ class DialogoContrasenia : DialogFragment() {
                         override fun onCancelled(error: DatabaseError) {
                         }
                     })
-                /*dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid).get()
-                    .addOnSuccessListener {
-
-                        usuario = it.value as Usuario
-
-                        auth.sendPasswordResetEmail(usuario.correo.toString())
-                            .addOnSuccessListener {
-                                Toast.makeText(
-                                    requireActivity().applicationContext,
-                                    "Correo enviado correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            .addOnFailureListener { e ->
-                                Toast.makeText(
-                                    requireActivity().applicationContext,
-                                    "Error al enviar el correo",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-
-                        /*auth.sendPasswordResetEmail(usuario.correo.toString())
-                            .addOnCompleteListener() { task ->
-                                if (task.isSuccessful) {
-                                    Toast.makeText(
-                                        requireActivity().applicationContext,
-                                        "Correo enviado correctamente",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else {
-                                    Toast.makeText(
-                                        requireActivity().applicationContext,
-                                        "Error al enviar el correo",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }*/
-                    }*/
             }.setNegativeButton("Cancelar") { dialogInterface, posicion ->
-
+                Toast.makeText(requireActivity().applicationContext, "Operación cancelada",Toast.LENGTH_SHORT).show()
             }
         return builder.create()
     }

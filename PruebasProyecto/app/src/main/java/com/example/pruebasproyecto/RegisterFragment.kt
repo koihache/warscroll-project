@@ -108,7 +108,6 @@ class RegisterFragment : Fragment() {
                                     bundle.putString("correo", binding.editRegisterCorreo.text.toString())
                                     bundle.putString("password", binding.editRegisterPassword.text.toString())
 
-
                                     var usuarioNuevo: Usuario = Usuario(auth.uid,binding.editRegisterCorreo.text.toString(),
                                         binding.editRegisterUsuario.text.toString(), HashMap())
                                     database.reference.child("usuarios").child(usuarioNuevo.idUsuario!!).setValue(usuarioNuevo)
@@ -121,9 +120,7 @@ class RegisterFragment : Fragment() {
                                         "El usuario no se ha creado correctamente",
                                         Snackbar.LENGTH_SHORT
                                     ).show()
-
                                 }
-
                             }
                     } else {
 

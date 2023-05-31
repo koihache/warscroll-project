@@ -22,9 +22,7 @@ class MinisFragment : Fragment() {
     private var _binding: FragmentMinisBinding? = null
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var adapterMinis: AdapterMinis
-
-    var listaMinis = arrayListOf<Perfil>()
-
+    private var listaMinis = arrayListOf<Perfil>()
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -76,7 +74,6 @@ class MinisFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        //TODO Hacer pruebas para ver si ordena de verdad
         dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 

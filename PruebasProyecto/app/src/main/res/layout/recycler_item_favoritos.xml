@@ -39,7 +39,7 @@
             android:id="@+id/label_especie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:text="@string/item_especie"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_imagen"
@@ -80,10 +80,10 @@
             android:id="@+id/label_cantidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginEnd="40dp"
             android:text="@string/item_cantidad"
             app:layout_constraintBottom_toBottomOf="@+id/text_especie"
-            app:layout_constraintStart_toEndOf="@+id/text_especie"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_especie" />
 
         <TextView

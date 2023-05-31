@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import com.example.pruebasproyecto.databinding.FragmentAjustesBinding
 import com.example.pruebasproyecto.dialog.DialogoBorrarDatos
 import com.example.pruebasproyecto.dialog.DialogoCerrarSesion
+import com.example.pruebasproyecto.dialog.DialogoContrasenia
+import com.example.pruebasproyecto.dialog.DialogoTerminos
 import com.example.pruebasproyecto.dialog.DialogoUsuario
 import com.example.pruebasproyecto.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
@@ -42,7 +44,6 @@ class AjustesFragment: Fragment(){
 
         binding.botonAjustesPerfil.setOnClickListener {
 
-
             dataBase =
                 FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
@@ -64,16 +65,21 @@ class AjustesFragment: Fragment(){
                     override fun onCancelled(error: DatabaseError) {
                     }
                 })
+        }
 
+        binding.botonAjustesTerminos.setOnClickListener {
+            DialogoTerminos().show(requireActivity().supportFragmentManager,"")
+        }
 
-
+        binding.botonAjustesDatos.setOnClickListener {
+            DialogoBorrarDatos().show(requireActivity().supportFragmentManager,"")
+        }
+        binding.botonAjustesPass.setOnClickListener {
+            DialogoContrasenia().show(requireActivity().supportFragmentManager,"")
         }
 
         binding.botonAjustesCerrarsesion.setOnClickListener {
             DialogoCerrarSesion().show(requireActivity().supportFragmentManager,"")
-        }
-        binding.botonAjustesDatos.setOnClickListener {
-            DialogoBorrarDatos().show(requireActivity().supportFragmentManager,"")
         }
 
     }

@@ -68,17 +68,34 @@
 
     <!-- Strings para el fragment Warcry -->
     <string name="que_es_warcry">¿Qué es Warcry?</string>
-    <string name="resumen_warcry">Warcry es un juego de escaramuzas para dos o más jugadores ambientado en Warhammer Age of Sigmar.
-
-        Es un juego rápido y fácil de empezar a jugar. Tradicionalmente se juega entre 2 o más jugadores.
-
-Los tres estilos de juego característicos de Age of Sigmar están disponibles también en Warcry: el Matched Play (o “Juego combinado”) es el más competitivo y equilibrado, el Narrative pone a tu banda de guerra en el centro de la acción creando una historia en torno a sus hazañas, y el Open Play es el más flexible permitiendo también partidas multijugador.</string>
-
-
+    <string name="resumen_warcry"><b>Warcry</b> es un juego de escaramuzas para dos o más jugadores ambientado en Warhammer Age of Sigmar.\n
+        \n
+        Es un juego rápido y fácil de empezar a jugar. Tradicionalmente se juega entre 2 o más jugadores.\n
+        \n
+        Los tres estilos de juego característicos de Age of Sigmar están disponibles también en Warcry: el Matched Play (o “Juego combinado”) es el más competitivo y equilibrado, el Narrative pone a tu banda de guerra en el centro de la acción creando una historia en torno a sus hazañas, y el Open Play es el más flexible permitiendo también partidas multijugador.\n
+        \n
+        Cada batalla se divide en dos fases: la fase de reunión y la fase de combate.\n
+        \n
+        En la fase de reunión, los jugadores se turnan para colocar las cartas de unidad o equipo sobre la mesa. Cada una de estas cartas tiene un coste en puntos de oro. En la primera batalla, ambos jugadores pueden reunir unidades por hasta 20 de oro, en la segunda, hasta 25, y en la tercera, hasta 30\n
+        \n
+        Cuando ambos jugadores terminan de reunir unidades, comienza la fase de combate. Los oponentes se turnan para dar órdenes (una orden puede ser un ataque, un movimiento o jugar una carta especial de la mano). Después de que ambos pasen sucesivamente, la batalla termina. Gana el jugador con más puntos de victoria (sumando la fuerza de las unidades supervivientes)\n</string>
     <!-- Strings para el fragment Killteam -->
     <string name="que_es_killteam">¿Qué es Killteam?</string>
 
-    <string name="resumen_killteam"></string>
+    <string name="resumen_killteam"><b>Killteam</b> es un juego de escaramuzas para dos o más jugadores ambientado en Warhammer 40,000.\n
+    \n
+    Sus reglas básicas son las siguientes: en Kill Team, los jugadores controlan equipos de pocas miniaturas de las diferentes facciones que componen el juego principal,y se enfrentan entre sí en juegos de pequeña escala y corta duración.\n
+    \n
+    El juego tiene tanto una vertiente equilibrada, para jugar partidas independientes o de juego competitivo; como una narrativa, en la cual los operativos ascienden de nivel y obtienen mejoras y equipo a lo largo de una campaña.\n
+    \n
+    Gracias a que es un juego de menor tamaño y de fechas de publicación más espaciadas, permite que Games Workshop utilice Kill Team para lanzar nuevas miniaturas que ya existían en el trasfondo de Warhammer 40.000 pero cuyas miniaturas no podían ser incluidas en un juego de mayor tamaño, como lassiguientes:\n
+    \n
+    Corsarios Eldar; que nunca habían existido, Comerciantes Independientes, Hermanas de Batalla Novicias; o incluso nuevas incorporaciones al trasfondo, como el Kelermorfo o los Intercesores Pesados.
+
+
+    </string>
+
+
 
 
 

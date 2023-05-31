@@ -76,9 +76,9 @@
             android:id="@+id/dialogo_label_especie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:text="@string/item_especie"
+            android:layout_marginStart="20dp"
             android:fontFamily="@font/kanit_regular"
+            android:text="@string/item_especie"
             app:layout_constraintBottom_toBottomOf="@+id/dialogo_perfil_especie"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/dialogo_perfil_especie" />

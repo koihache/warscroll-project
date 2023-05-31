@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SaberMasWarcryFragment"
+    android:background="@color/color5"
     android:padding="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

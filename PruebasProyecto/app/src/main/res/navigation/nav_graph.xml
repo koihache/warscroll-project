@@ -18,13 +18,6 @@
             android:id="@+id/action_Login_to_SecondActivity"
             app:destination="@id/SecondActivity" />
 
-        <argument
-            android:name="correo"
-            app:argType="string" />
-        <argument
-            android:name="contrasenia"
-            app:argType="string" />
-
     </fragment>
     <fragment
         android:id="@+id/RegisterFragment"
@@ -42,26 +35,6 @@
         android:name="com.example.pruebasproyecto.SecondActivity"
         android:label="activity_second"
         tools:layout="@layout/activity_second" >
-        <argument
-            android:name="usuario"
-            app:argType="com.example.pruebasproyecto.model.Usuario" />
+
     </activity>
-    <fragment
-        android:id="@+id/inicioFragment"
-        android:name="com.example.pruebasproyecto.InicioFragment"
-        android:label="fragment_inicio"
-        tools:layout="@layout/fragment_inicio" >
-        <action
-            android:id="@+id/action_inicioFragment_to_ajustesFragment"
-            app:destination="@id/ajustesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/ajustesFragment"
-        android:name="com.example.pruebasproyecto.AjustesFragment"
-        android:label="fragment_ajustes"
-        tools:layout="@layout/fragment_ajustes" >
-        <action
-            android:id="@+id/action_ajustesFragment_to_inicioFragment"
-            app:destination="@id/inicioFragment" />
-    </fragment>
 </navigation>

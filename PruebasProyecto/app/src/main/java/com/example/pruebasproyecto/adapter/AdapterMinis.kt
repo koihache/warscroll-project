@@ -34,13 +34,15 @@ class AdapterMinis(
 
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
-    private var usuario: Usuario? = null
+    private val favoritosSet = HashSet<String>()
+
 
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var nombre: TextView
         var imagen: ImageView
         var constraintLayout: ConstraintLayout
         var botonFav: Switch
+        var esFavorito: Boolean = false
 
 
         init {
@@ -77,65 +79,44 @@ class AdapterMinis(
             val dialogo = DialogoPerfil.newInstance(mini)
             dialogo.show(supporFragmentManager, "")
         }
+        holder.esFavorito = favoritosSet.contains(mini.idMini.toString())
 
-        //TODO Acabar bien la comprobación
-        dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos").orderByChild("name").addValueEventListener(object :
-            ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (i in snapshot.children) {
-                        if((i.getValue(Perfil::class.java) as Perfil)==(mini)){
-                            holder.botonFav.isChecked = true;
-                        }
-                    }
-                }else{
-                    //ERROR EN SNAPSHOT
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-            }
+        holder.botonFav.isChecked = holder.esFavorito
 
-        })
-
-
-        //TODO FAVORITOS
-        holder.botonFav.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { boton, isChecked ->
-            if (isChecked) {
-                //TODO Hacer algo si es true
-                dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos")
-                    .child(mini.nombrePerfil.toString()).setValue(mini)
-
-                /*dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos")
-                    .orderByChild("name").addValueEventListener(object :
-                        ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            if (snapshot.exists()) {
-                                for (i in snapshot.children) {
-
-                                }
-                            } else {
-                                Snackbar.make(
-                                    boton, "No tienes favoritos agregados",
-                                    Snackbar.LENGTH_SHORT
-                                ).show()
+        dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos").orderByChild("name")
+            .addValueEventListener(object :
+                ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (i in snapshot.children) {
+                            if((i.getValue(Perfil::class.java) as Perfil)==(mini)){
+                                holder.botonFav.isChecked = true;
                             }
                         }
+                    } else {
+                        //ERROR EN SNAPSHOT
+                    }
+                }
 
-                        override fun onCancelled(error: DatabaseError) {
-                            Snackbar.make(
-                                boton, "Ha ocurrido un error en la base de datos",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                        }
+                override fun onCancelled(error: DatabaseError) {
+                }
 
-                    })*/
+            })
+
+
+        holder.botonFav.setOnClickListener {
+            holder.esFavorito = !holder.esFavorito
+            holder.botonFav.isChecked = holder.esFavorito
+
+            // Realizar acciones según el estado de esFavorito
+            if (holder.esFavorito) {
+                dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos")
+                    .child(mini.nombrePerfil.toString()).setValue(mini)
             } else {
-                //TODO Hacer algo si es false
                 dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos")
                     .child(mini.nombrePerfil.toString()).setValue(null)
-
             }
-        })
+        }
     }
 
     override fun getItemCount(): Int {

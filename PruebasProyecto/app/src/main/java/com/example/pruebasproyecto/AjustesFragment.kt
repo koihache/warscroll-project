@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pruebasproyecto.databinding.FragmentAjustesBinding
 import com.example.pruebasproyecto.dialog.DialogoBorrarDatos
 import com.example.pruebasproyecto.dialog.DialogoCerrarSesion
 import com.example.pruebasproyecto.dialog.DialogoContrasenia
-import com.example.pruebasproyecto.dialog.DialogoTerminos
 import com.example.pruebasproyecto.dialog.DialogoUsuario
 import com.example.pruebasproyecto.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +22,6 @@ import com.google.firebase.ktx.Firebase
 class AjustesFragment: Fragment(){
 
     private var _binding: FragmentAjustesBinding? = null
-
     private val binding get() = _binding!!
     private var usuario: Usuario? = null
     private lateinit var dataBase: FirebaseDatabase
@@ -35,23 +32,19 @@ class AjustesFragment: Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //Inflamos la vista del fragment
         _binding = FragmentAjustesBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        dataBase =
-            FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
-
+        //Traemos la bbdd y la autenticacion
+        dataBase = FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
         auth = Firebase.auth
 
-
+        //Pulsacion boton mostrar perfil (traemos bbdd por problemas con el transpaso de datos)
         binding.botonAjustesPerfil.setOnClickListener {
-
-
             dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -59,8 +52,7 @@ class AjustesFragment: Fragment(){
                             for (i in snapshot.children) {
                                 usuario = (i.getValue(Usuario::class.java) as Usuario)
                             }
-                            //TODO Revisar porque no puedo sacar el valor
-                            //TODO usuario fuera de la sentencia de la bdd
+                            //Crea el dialogo y envia la información necesaria
                             val dialogo = DialogoUsuario.newInstance(usuario?.correo!!, usuario?.usuario!!)
                             dialogo.show(requireActivity().supportFragmentManager,"")
                         }
@@ -70,13 +62,15 @@ class AjustesFragment: Fragment(){
                 })
         }
 
+        //Pulsacion boton borrar datos
         binding.botonAjustesDatos.setOnClickListener {
             DialogoBorrarDatos().show(requireActivity().supportFragmentManager,"")
         }
+        //Pulsacion boton contrasenia
         binding.botonAjustesPass.setOnClickListener {
             DialogoContrasenia().show(requireActivity().supportFragmentManager,"")
         }
-
+        //Pulsacion boton cerrar sesion
         binding.botonAjustesCerrarsesion.setOnClickListener {
             DialogoCerrarSesion().show(requireActivity().supportFragmentManager,"")
         }

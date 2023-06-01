@@ -12,10 +12,12 @@ class SaberMasKillteamFragment: Fragment() {
     private var _binding: KillteamFragmentBinding? = null
     private val binding get() = _binding!!
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //Inflamos la vista
         _binding = KillteamFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }

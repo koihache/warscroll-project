@@ -20,20 +20,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
-
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
-
     private lateinit var auth: FirebaseAuth
-
     private lateinit var dataBase: FirebaseDatabase
-
     private lateinit var correo: String
-
     private lateinit var password: String
 
 
@@ -51,31 +43,17 @@ class LoginFragment : Fragment() {
 
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        correo = arguments?.getString("correo").toString()
-        password = arguments?.getString("password").toString()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Traemos bbdd y autenticacion
         auth = Firebase.auth
         dataBase = FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
-
-        //Si no están vacios los campos rellenados anteriormente por el register
-        //los pone en los edit para facilitar el usuario el inicio de la sesión
-
-        if ((correo==null) && (password==null)){
-            binding.editLoginCorreo.setText(correo)
-            binding.editLoginPassword.setText(password)
-        }
 
         //Controlamos la pulsación del botón Iniciar Sesión
         binding.botonLogin.setOnClickListener{
 
             if(!binding.editLoginCorreo.text.isNullOrBlank() && !binding.editLoginPassword.text.isNullOrBlank()){
-
                 //Mediante el auth, solicitamos iniciar sesión a Firebase
                 auth.signInWithEmailAndPassword(
                     binding.editLoginCorreo.text.toString(),
@@ -83,20 +61,14 @@ class LoginFragment : Fragment() {
                 ).addOnCompleteListener {
 
                     if (it.isSuccessful) {
-                        //TODO Revisar el bundle
-                        val bundle = Bundle()
-                        bundle.putString("nombre", binding.editLoginCorreo.text.toString())
-                        bundle.putString("uid", auth.uid)
-
                         Snackbar.make(
                             binding.botonLogin, "Sesión iniciada correctamente",
                             Snackbar.LENGTH_SHORT
                         ).show()
 
+                        //Cambiamos de activity
                         findNavController().navigate(
-                            // nombre del metodo del nav,
-                            R.id.action_Login_to_SecondActivity,
-                            bundle
+                            R.id.action_Login_to_SecondActivity
                         )
                     } else {
                         Snackbar.make(

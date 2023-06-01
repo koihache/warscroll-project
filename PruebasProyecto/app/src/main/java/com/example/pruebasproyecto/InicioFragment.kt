@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pruebasproyecto.databinding.FragmentInicioBinding
 import com.example.pruebasproyecto.model.Usuario
@@ -25,37 +26,28 @@ class InicioFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var listener: OnSaberMasListener
 
-    /*companion object{
-        fun newInstance(usuario: Usuario): InicioFragment {
-            val args = Bundle()
-            args.putSerializable("usuario", usuario)
-            val fragment = InicioFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentInicioBinding.inflate(inflater, container, false)
-        //usuario = arguments?.getSerializable("usuario") as Usuario
         return binding.root
     }
 
-    //@RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
+        //Igualamos al contexto para llenar la interfaz
         listener = context as OnSaberMasListener
 
-        //TODO Comprobar
+        //Traemos bbdd y autenticacion
         dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
         auth = Firebase.auth
 
+        //Traemos el usuario que ha hecho login
         dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -63,12 +55,12 @@ class InicioFragment : Fragment() {
                         for (i in snapshot.children) {
                             usuario = (i.getValue(Usuario::class.java) as Usuario)
                         }
-                        //TODO Revisar porque no puedo sacar el valor
-                        //TODO usuario fuera de la sentencia de la bdd
+                        //Asignamos el valor al item correspondiente
                         binding.textInicioNombreUsuario.text = usuario!!.usuario;
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(context,"Ha ocurrido un error en bbdd",Toast.LENGTH_SHORT).show()
                 }
         })
     }
@@ -76,15 +68,16 @@ class InicioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Manejamos pulsacion botones de sabermas
         binding.botonInicioSabermasWarcry.setOnClickListener {
             listener.onSaberMasSelected(1)
         }
-
         binding.botonInicioSabermasKillteam.setOnClickListener {
             listener.onSaberMasSelected(2)
         }
     }
 
+    //Interfaz de callback para gestionar pulsaciones de boton
     interface OnSaberMasListener{
         fun onSaberMasSelected(opcion: Int)
     }

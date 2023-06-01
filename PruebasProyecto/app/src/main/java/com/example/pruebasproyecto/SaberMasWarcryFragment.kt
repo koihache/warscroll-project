@@ -16,6 +16,7 @@ class SaberMasWarcryFragment: Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //Inflamos la vista
         _binding = WarcryFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -27,8 +27,7 @@ class FavoritosFragment : Fragment() {
     private lateinit var dataBase: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     private lateinit var adapterFavoritos: AdapterFavoritos
-
-    var listaMinisFavoritas = arrayListOf<Perfil>()
+    private var listaMinisFavoritas = arrayListOf<Perfil>()
 
     private val binding get() = _binding!!
 
@@ -39,16 +38,14 @@ class FavoritosFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFavoritosBinding.inflate(inflater, container, false)
-
-        adapterFavoritos = AdapterFavoritos(ArrayList<Perfil>(),requireContext(), requireActivity().supportFragmentManager)
-
+        //Creamos y realizamos la igualación del adaptador para el filtro y el mostrado normal de la informacion
+        adapterFavoritos = AdapterFavoritos(ArrayList<Perfil>(),requireContext())
         binding.recyclerFavoritos.adapter = adapterFavoritos
-
         binding.recyclerFavoritos.layoutManager = LinearLayoutManager(activity?.applicationContext,LinearLayoutManager.VERTICAL,false)
 
         filtrarLista()
 
-        //TODO Filtrar
+        //Filtro en caliente
         binding.favoritosFiltrar.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -62,35 +59,20 @@ class FavoritosFragment : Fragment() {
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //Traemos bbdd y autenticacion
+        dataBase =
+            FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
-    private fun filtrarLista() {
-        binding.recyclerFavoritos.layoutManager = LinearLayoutManager(requireContext())
-        adapterFavoritos =
-            AdapterFavoritos(listaMinisFavoritas, requireContext(), requireActivity().supportFragmentManager)
-        binding.recyclerFavoritos.adapter = adapterFavoritos
-    }
-
-    private fun filtrar(text: String) {
-        var listaFiltrada = arrayListOf<Perfil>()
-
-        listaMinisFavoritas.forEach {
-            if (it.nombrePerfil?.toLowerCase()?.contains(text.toLowerCase())!!) {
-                listaFiltrada.add(it)
-            }
-        }
-        adapterFavoritos.filtrar(listaFiltrada)
+        auth = Firebase.auth
     }
 
 
     override fun onResume() {
         super.onResume()
 
-        //TODO Hacer pruebas para ver si ordena de verdad
-        dataBase =
-            FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
-
-        auth = Firebase.auth
-
+        //Traemos los perfiles favoritos de cada usuario para mandarlos al adapter
         dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos").orderByChild("name").addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -102,11 +84,30 @@ class FavoritosFragment : Fragment() {
                     Snackbar.make(binding.favoritosFiltrar,"No tienes favoritos agregados",Snackbar.LENGTH_SHORT).show()
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Snackbar.make(binding.favoritosFiltrar,"Ha ocurrido un error en la base de datos",Snackbar.LENGTH_LONG).show()
             }
 
         })
+    }
+
+    //Filtra la lista y le pasa al adaptador la lista filtrada
+    private fun filtrarLista() {
+        binding.recyclerFavoritos.layoutManager = LinearLayoutManager(requireContext())
+        adapterFavoritos =
+            AdapterFavoritos(listaMinisFavoritas, requireContext())
+        binding.recyclerFavoritos.adapter = adapterFavoritos
+    }
+
+    //Filtra mediante el texto pasado
+    private fun filtrar(text: String) {
+        var listaFiltrada = arrayListOf<Perfil>()
+
+        listaMinisFavoritas.forEach {
+            if (it.nombrePerfil?.toLowerCase()?.contains(text.toLowerCase())!!) {
+                listaFiltrada.add(it)
+            }
+        }
+        adapterFavoritos.filtrar(listaFiltrada)
     }
 }

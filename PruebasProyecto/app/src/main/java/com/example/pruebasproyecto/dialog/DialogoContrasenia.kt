@@ -31,14 +31,17 @@ class DialogoContrasenia : DialogFragment() {
 
     private lateinit var usuario: Usuario
 
-    private lateinit var context:Context;
+    private lateinit var context: Context;
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
+        //Creamos el dialogo
         var builder = AlertDialog.Builder(requireContext());
 
+        //Traemos el contexto ya que será necesario al cerrarse el dialogo
         context = requireContext()
 
+        //Traemos base de datos y autenticacion
         auth = Firebase.auth
         dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
@@ -47,6 +50,7 @@ class DialogoContrasenia : DialogFragment() {
             .setMessage("¿Desea cambiar la contraseña por una nueva?")
             .setPositiveButton("Aceptar") { dialogInterface, posicion ->
 
+                //Buscamos al usuario en la bbdd
                 dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
                     .addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
@@ -54,6 +58,7 @@ class DialogoContrasenia : DialogFragment() {
                                 for (i in snapshot.children) {
                                     usuario = (i.getValue(Usuario::class.java) as Usuario)
                                 }
+                                //Mandamos un correo de reset de contraseña al usuario
                                 auth.sendPasswordResetEmail(usuario.correo.toString())
                                     .addOnSuccessListener {
                                         Toast.makeText(
@@ -71,11 +76,21 @@ class DialogoContrasenia : DialogFragment() {
                                     }
                             }
                         }
+
                         override fun onCancelled(error: DatabaseError) {
+                            Toast.makeText(
+                                context,
+                                "Error en la base de datos",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     })
             }.setNegativeButton("Cancelar") { dialogInterface, posicion ->
-                Toast.makeText(requireActivity().applicationContext, "Operación cancelada",Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireActivity().applicationContext,
+                    "Operación cancelada",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         return builder.create()
     }

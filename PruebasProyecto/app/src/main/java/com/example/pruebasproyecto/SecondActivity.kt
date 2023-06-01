@@ -20,45 +20,15 @@ import com.google.firebase.ktx.Firebase
 class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, InicioFragment.OnSaberMasListener {
 
     private lateinit var binding: ActivitySecondBinding
-    //private lateinit var usuario: Usuario
-
-    private lateinit var dataBase: FirebaseDatabase
-    private lateinit var auth: FirebaseAuth
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Inflamos la vista
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        /*dataBase =
-            FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
-
-        auth = Firebase.auth
-
-        //TODO Hacer una lista de usuarios y coger la primera y unica posicion
-        dataBase.getReference("usuarios").orderByChild("idUsuario").equalTo(auth.uid!!)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        for (i in snapshot.children) {
-                            //TODO Revisar con BORJA
-                            // listaUsuarios.add((i.getValue(Usuario::class.java) as Usuario))
-
-                            usuario = (i.getValue(Usuario::class.java) as Usuario)
-
-                            InicioFragment.newInstance(usuario)
-                        }
-                    }
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    Snackbar.make(binding.frameLayoutFragments, "Cancelled", Snackbar.LENGTH_SHORT)
-                        .show()
-                }
-            })*/
-
     }
 
+    //Registramos la pulsacion del menu para cambiar el fragment
     override fun onCambioSelected(opcion: Int) {
         var fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -85,6 +55,7 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
         fragmentTransaction.commit();
     }
 
+    //Registramos la pulsacion del inicio para cambiar el fragment
     override fun onSaberMasSelected(opcion: Int) {
 
         var fragmentTransaction = supportFragmentManager.beginTransaction()
@@ -102,9 +73,9 @@ class SecondActivity : AppCompatActivity(), MenuFragment.OnCambioListener, Inici
         fragmentTransaction.commit();
 
     }
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
 
+    //Evitamos que el usuario pulse hacia atras
+    override fun onBackPressed() {
     }
 
 }

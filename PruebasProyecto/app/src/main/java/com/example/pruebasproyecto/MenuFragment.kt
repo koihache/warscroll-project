@@ -15,19 +15,8 @@ class MenuFragment: Fragment(){
     private var _binding: FragmentMenuBinding? = null
     private lateinit var actividad: SecondActivity;
     private lateinit var listener: OnCambioListener
-
     private val binding get() = _binding!!
 
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        try {
-            listener = context as OnCambioListener
-        } catch (e: java.lang.ClassCastException){
-            Log.v("pruebas", "error de conversion en el tipo")
-        }
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,11 +26,16 @@ class MenuFragment: Fragment(){
         return binding.root
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
 
+        listener = context as OnCambioListener
+
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Pruebas
+        //Manejamos la pulsacion del menú y hacemos control de visualización del xml
 
         binding.botonInicio.setOnClickListener {
             listener.onCambioSelected(1)
@@ -74,6 +68,7 @@ class MenuFragment: Fragment(){
         }
     }
 
+    //Interfaz de callback para detectar el cambio de la pulsacion en el menu
     interface OnCambioListener{
         fun onCambioSelected(opcion:Int)
     }

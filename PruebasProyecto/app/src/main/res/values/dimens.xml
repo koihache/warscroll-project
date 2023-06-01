@@ -1,6 +1,6 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="tamanio_input">350dp</dimen>
 
@@ -9,7 +9,6 @@
     <dimen name="tamanio_texto_boton_ajustes">18sp</dimen>
 
     <dimen name="tamanio_boton_ajustes">65dp</dimen>
-
 
 
 </resources>

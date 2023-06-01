@@ -19,6 +19,7 @@ class DialogoUsuario : DialogFragment() {
     private lateinit var correo: String
     private lateinit var usuario: String
 
+    //Definimos metodo para traer el correo y usuario por args
     companion object{
         fun newInstance(correo : String, usuario: String): DialogoUsuario {
             val args = Bundle()
@@ -32,23 +33,27 @@ class DialogoUsuario : DialogFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        //Inflamos la vista
         vista = LayoutInflater.from(context).inflate(R.layout.dialogo_usuario,null);
     }
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
+    //Creamos la vista y traemos correo y usuario
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         var builder = AlertDialog.Builder(requireContext())
         builder.setView(vista)
         correo = this.arguments?.get("correo").toString()
         usuario = this.arguments?.get("usuario").toString()
+
+        //Definimos valores del xml a los items
+        labelCorreo = vista.findViewById(R.id.dialogo_perfil_correo);
+        labelUsuario = vista.findViewById(R.id.dialogo_perfil_usuario);
         return builder.create()
 
     }
 
     override fun onStart() {
         super.onStart()
-        labelCorreo = vista.findViewById(R.id.dialogo_perfil_correo);
-        labelUsuario = vista.findViewById(R.id.dialogo_perfil_usuario);
-
+        //Igualamos los items a su valor correspondiente
         labelCorreo.setText(correo)
         labelUsuario.setText(usuario)
     }

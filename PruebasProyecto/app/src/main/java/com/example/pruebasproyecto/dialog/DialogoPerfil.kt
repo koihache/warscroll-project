@@ -23,6 +23,7 @@ class DialogoPerfil: DialogFragment() {
     private lateinit var textUniverso: TextView;
     private lateinit var perfilRecibido:Perfil
 
+    //Definimos metodo para traer el perfil por args
     companion object{
         fun newInstance(perfil: Perfil): DialogoPerfil {
             val args = Bundle()
@@ -34,28 +35,30 @@ class DialogoPerfil: DialogFragment() {
     }
 
     override fun onAttach(context: Context) {
-
         super.onAttach(context)
+        //Inflamos la vista
         vista = LayoutInflater.from(context).inflate(R.layout.dialogo_perfil, null);
     }
 
+    //Creamos la vista y traemos perfil
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         var builder = AlertDialog.Builder(requireContext())
         builder.setView(vista)
         perfilRecibido = arguments?.getSerializable("perfil") as Perfil
+
+        //Definimos valores del xml a los items
+        imagenPerfil = vista.findViewById(R.id.dialogo_perfil_imagen);
+        textNombre = vista.findViewById(R.id.dialogo_perfil_nombre);
+        textEspecie = vista.findViewById(R.id.dialogo_perfil_especie);
+        textCantidad = vista.findViewById(R.id.dialogo_perfil_cantidad)
+        textUniverso = vista.findViewById(R.id.dialogo_perfil_universo)
         return builder.create()
     }
 
 
     override fun onStart() {
         super.onStart()
-
-        imagenPerfil = vista.findViewById(R.id.dialogo_perfil_imagen);
-        textNombre = vista.findViewById(R.id.dialogo_perfil_nombre);
-        textEspecie = vista.findViewById(R.id.dialogo_perfil_especie);
-        textCantidad = vista.findViewById(R.id.dialogo_perfil_cantidad)
-        textUniverso = vista.findViewById(R.id.dialogo_perfil_universo)
-
+        //Igualamos los items a su valor correspondiente
         Glide.with(requireContext()).load(perfilRecibido.imagen).into(imagenPerfil)
         textNombre.setText(perfilRecibido.nombrePerfil)
         textEspecie.setText(perfilRecibido.especie)

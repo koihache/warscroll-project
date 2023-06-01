@@ -17,18 +17,19 @@ class DialogoBorrarDatos: DialogFragment() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-
+        //Traemos la base de datos y la autenticacion
         dataBase =
             FirebaseDatabase.getInstance("https://fir-warscroll-default-rtdb.firebaseio.com/")
 
         auth = Firebase.auth
 
+        //Construimos el dialogo
         var builder = AlertDialog.Builder(requireContext());
 
         builder.setTitle("Borrar datos")
             .setMessage("¿Estas seguro de que quieres borrar todos tus datos? \nEsto eliminará todos tus perfiles favoritos.")
             .setPositiveButton("Sí") { dialogInterface, posicion ->
-
+                //Borra los favoritos del usuario en la bbdd
                 dataBase.getReference("usuarios").child(auth.uid!!).child("favoritos").setValue(null)
 
             }.setNegativeButton("No"){ dialogInterface, posicion ->
